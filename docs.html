@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Documentation | Ratio Shift</title>
+</head>
+<body>
+    <header class="navbar">
+        <div class="nav-logo">
+            <a href="index.html">
+                <span class="logo-text">Ratio<span>Shift</span></span>
+            </a>
+        </div>
+        <nav class="nav-menu">
+            <ul class="nav-links">
+                <li><a href="index.html" id="nav-calculators">All Calculators</a></li>
+                <li><a href="docs.html" id="nav-docs">Documentation</a></li>
+                <li><a href="coming-soon.html?page=blog" id="nav-blog">Blog</a></li>
+                <li><a href="about.html" id="nav-about">About Us</a></li>
+            </ul>
+        </nav>
+        <div class="nav-actions">
+            <label class="theme-switch" for="checkbox">
+                <input type="checkbox" id="checkbox" />
+                <div class="slider round">
+                    <span class="icon-sun">☀️</span>
+                    <span class="icon-moon">🌙</span>
+                </div>
+            </label>
+            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle Menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+    </header>
+
+    <main class="docs-wrapper">
+        <aside class="docs-sidebar">
+            <div class="sidebar-block">
+                <h4>General</h4>
+                <ul>
+                    <li><a href="#intro" class="doc-link">Introduction</a></li>
+                    <li><a href="#core-concepts" class="doc-link">Core Concepts</a></li>
+                </ul>
+            </div>
+            <div class="sidebar-block">
+                <h4>Fluid Scaling</h4>
+                <ul>
+                    <li><a href="#how-it-works" class="doc-link">How it Works</a></li>
+                    <li><a href="#universal-scaling" class="doc-link">Universal Use-Cases</a></li>
+                    <li><a href="#math-logic" class="doc-link">The Mathematics</a></li>
+                </ul>
+            </div>
+            <div class="sidebar-block">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#faq" class="doc-link">FAQ</a></li>
+                    <li><a href="https://github.com/RatioShift" target="_blank">Report an Issue</a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <article class="docs-content">
+            <section id="intro">
+                <h1>Documentation</h1>
+                <p class="lead">RatioShift provides precision-engineered tools to bridge the gap between design intent and front-end implementation through fluid scaling.</p>
+            </section>
+
+            <section id="core-concepts">
+                <h2>Core Concepts</h2>
+                <p>Our tools prioritize <strong>Relative Units</strong> (REM, VW, %) over absolute pixels (PX). This approach ensures that your website remains accessible and scales beautifully across all devices without "breakpoint jumping."</p>
+            </section>
+
+            <hr>
+
+            <section id="how-it-works">
+                <h2>The Fluid Scale Calculator</h2>
+                <p>The core utility of RatioShift is the Fluid Scale Generator. It creates a CSS <code>clamp()</code> function that enables any numerical property to scale linearly between two defined points.</p>
+                
+                <div class="use-case-grid">
+                    <div class="use-case-card">
+                        <span class="use-icon">text_fields</span>
+                        <h5>Typography</h5>
+                        <p>Fluid <code>font-size</code> and <code>line-height</code> for perfect readability.</p>
+                    </div>
+                    <div class="use-case-card">
+                        <span class="use-icon">space_bar</span>
+                        <h5>Spacing</h5>
+                        <p>Responsive <code>padding</code> and <code>margin</code> without media queries.</p>
+                    </div>
+                    <div class="use-case-card">
+                        <span class="use-icon">aspect_ratio</span>
+                        <h5>Dimensions</h5>
+                        <p>Scale <code>width</code>, <code>height</code>, or <code>gap</code> proportionally.</p>
+                    </div>
+                    <div class="use-case-card">
+                        <span class="use-icon">rounded_corner</span>
+                        <h5>UI Details</h5>
+                        <p>Even <code>border-radius</code> can grow with the screen size.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="universal-scaling">
+                <h2>Universal Implementation</h2>
+                <p>Apply the calculator's output to any property category to create a cohesive "zoom" effect for your UI.</p>
+
+                <div class="property-table-wrapper">
+                    <table class="property-table">
+                        <thead>
+                            <tr>
+                                <th>Category</th>
+                                <th>Properties</th>
+                                <th>Benefit</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Layout</strong></td>
+                                <td><code>gap</code>, <code>grid-template-columns</code></td>
+                                <td>Tight mobile spacing, breathable desktop layouts.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Box Model</strong></td>
+                                <td><code>padding</code>, <code>margin</code>, <code>max-width</code></td>
+                                <td>Prevents elements from feeling cramped on small screens.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Verticals</strong></td>
+                                <td><code>line-height</code>, <code>letter-spacing</code></td>
+                                <td>Maintains aesthetic rhythm across all viewports.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="example-box">
+                    <strong>Pro-Tip: Fluid Section Padding</strong>
+                    <p>Plug in <code>20px</code> (Min) and <code>100px</code> (Max) to get a section that feels intimate on phone screens but expansive on high-resolution displays.</p>
+                </div>
+            </section>
+
+            <section id="math-logic">
+                <h2>The Math Behind the Slope</h2>
+                <p>We use linear interpolation to find the precise rate of change (slope) required for smooth scaling.</p>
+                
+                <div class="math-block">
+                    $$Slope = \frac{MaxFontSize - MinFontSize}{MaxViewport - MinViewport}$$
+                    $$yIntercept = MinFontSize - (MinViewport \times Slope)$$
+                </div>
+                
+                <p>Resulting Syntax: <code>clamp(min, preferred, max)</code> where preferred is <code>yIntercept + SlopeVW</code>.</p>
+            </section>
+
+            <section id="faq">
+                <h2>FAQ</h2>
+                <details class="faq-item">
+                    <summary>Why use REM instead of PX?</summary>
+                    <p>REM units respect browser-level font scaling, ensuring users with visual impairments can still navigate your site comfortably.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>Browser Compatibility?</summary>
+                    <p>CSS <code>clamp()</code> is supported by over 96% of global browsers, including all modern versions of Chrome, Safari, Edge, and Firefox.</p>
+                </details>
+            </section>
+        </article>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <div class="nav-logo">
+                    <a href="index.html">
+                        <span class="logo-text">Ratio<span>Shift</span></span>
+                    </a>
+                </div>
+                <p>Precise tools for modern web developers.</p>
+            </div>
+
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">All Calculators</a></li>
+                    <li><a href="coming-soon.html?page=docs">Documentation</a></li>
+                    <li><a href="coming-soon.html?page=blog">Blog</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-social">
+                <h4>Connect</h4>
+                <div class="social-icons">
+                    <a href="https://github.com/RatioShift" target="_blank">GitHub</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2024 Ratio Shift. Built with ⚡ by Al Azmain.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -62,6 +62,9 @@ function highlightNav() {
     ) {
         document.getElementById('nav-calculators')?.classList.add('active');
     }
+    else if (path.includes('docs.html')) {
+        document.getElementById('nav-docs')?.classList.add('active');
+    }
 }
 
 /* /* ==========================================================================
