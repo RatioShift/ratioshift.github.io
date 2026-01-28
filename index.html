@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>DevelopCalc | Fluid Design Tool</title>
+</head>
+<body>
+    <header class="navbar">
+        <div class="nav-logo">
+            <a href="#"><span class="logo-text">Dev<span>Calc</span></span></a>
+        </div>
+        <nav class="nav-menu">
+            <ul class="nav-links">
+                <li><a href="#" class="active">All Calculators</a></li>
+                <li><a href="#">Documentation</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">About Us</a></li>
+            </ul>
+        </nav>
+        <div class="nav-actions">
+            <label class="theme-switch" for="checkbox">
+                <input type="checkbox" id="checkbox" />
+                <div class="slider round">
+                    <span class="icon-sun">☀️</span>
+                    <span class="icon-moon">🌙</span>
+                </div>
+            </label>
+            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle Menu">
+                <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+            </button>
+        </div>
+    </header> 
+
+    <main class="container">
+        <section class="calculator-card">
+            <div class="card-header">
+                <h1>Fluid Type Calculator</h1>
+                <p>Generate a perfect CSS clamp() function for responsive sizes.</p>
+            </div>
+            <div class="input-grid">
+                <div class="input-group">
+                    <label>Min Size (px)</label>
+                    <input type="number" id="minSize" value="16">
+                </div>
+                <div class="input-group">
+                    <label>Max Size (px)</label>
+                    <input type="number" id="maxSize" value="48">
+                </div>
+                <div class="input-group">
+                    <label>Min Viewport (px)</label>
+                    <input type="number" id="minVW" value="320">
+                </div>
+                <div class="input-group">
+                    <label>Max Viewport (px)</label>
+                    <input type="number" id="maxVW" value="1600">
+                </div>
+                <div class="input-group full-width">
+                    <label>Base REM Size</label>
+                    <input type="number" id="baseRem" value="16">
+                </div>
+            </div>
+            <div class="output-section">
+                <div class="stats">
+                    <div>Slope: <span id="slopeOut">0</span>%</div>
+                    <div>Base: <span id="baseOut">0</span>rem</div>
+                </div>
+                <div class="code-result">
+                    <code id="clampCode">clamp(...)</code>
+                    <button id="copyBtn">Copy Code</button>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
