@@ -64,32 +64,51 @@ function highlightNav() {
     }
 }
 
-/* ==========================================================================
+/* /* ==========================================================================
    4. FLUID TYPE CALCULATOR LOGIC
    ========================================================================== */
 const calcInputs = ['minSize', 'maxSize', 'minVW', 'maxVW', 'baseRem'];
+const toast = document.getElementById('toast');
+const resetBtn = document.getElementById('resetBtn');
 
 // Only run if we are on the calculator page
 if (document.getElementById('minSize')) {
+    
+    // 1. Listen for typing/sliding
     calcInputs.forEach(id => {
         document.getElementById(id).addEventListener('input', calculateClamp);
     });
 
+    // 2. Copy Button Logic
     document.getElementById('copyBtn').addEventListener('click', function() {
         const code = document.getElementById('clampCode').innerText;
-        navigator.clipboard.writeText(code);
-        
-        this.innerText = "Copied!";
-        this.style.background = "#28a745"; // Success Green
-        
-        setTimeout(() => {
-            this.innerText = "Copy Code";
-            this.style.background = "var(--accent-color)";
-        }, 2000);
+        navigator.clipboard.writeText(code).then(() => {
+            showToast();
+        });
     });
 
-    // Initial calculation
+    // 3. Reset Button Logic
+    if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+            document.getElementById('minSize').value = 16;
+            document.getElementById('maxSize').value = 48;
+            document.getElementById('minVW').value = 320;
+            document.getElementById('maxVW').value = 1600;
+            document.getElementById('baseRem').value = 16;
+            calculateClamp(); // Refresh the numbers
+        });
+    }
+
+    // Initial calculation on page load
     calculateClamp();
+}
+
+// 4. Toast Notification Function
+function showToast() {
+    toast.classList.add('show');
+    setTimeout(() => {
+        toast.classList.remove('show');
+    }, 2500);
 }
 
 function calculateClamp() {
@@ -100,7 +119,6 @@ function calculateClamp() {
     const base = parseFloat(document.getElementById('baseRem').value);
 
     if (minS && maxS && minV && maxV && base) {
-        // The Slope Math
         const slope = (maxS - minS) / (maxV - minV);
         const yAxisIntersection = -minV * slope + minS;
         
@@ -109,7 +127,6 @@ function calculateClamp() {
         const minRem = (minS / base).toFixed(3);
         const maxRem = (maxS / base).toFixed(3);
 
-        // Update UI
         document.getElementById('slopeOut').innerText = slopePercentage;
         document.getElementById('baseOut').innerText = baseRemValue;
         
@@ -117,6 +134,3 @@ function calculateClamp() {
         document.getElementById('clampCode').innerText = result;
     }
 }
-
-// Global Init
-window.addEventListener('DOMContentLoaded', highlightNav);

@@ -263,6 +263,53 @@ input:focus {
 
 #copyBtn:hover { opacity: 0.9; }
 
+/* Button Grouping */
+.button-group {
+    display: flex;
+    gap: 10px;
+}
+
+.secondary-btn {
+    background: transparent;
+    border: 2px solid var(--accent-color);
+    color: var(--accent-color);
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.secondary-btn:hover {
+    background: var(--accent-color);
+    color: white;
+}
+
+/* Toast Notification Styles */
+.toast-notification {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: #333;
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 50px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 2000;
+    font-size: 0.9rem;
+}
+
+.toast-notification.show {
+    transform: translateX(-50%) translateY(0);
+}
+
+[data-theme="dark"] .toast-notification {
+    background: var(--accent-color);
+    color: #000;
+}
+
 /* ==========================================================================
    7. FOOTER STYLES
    ========================================================================== */
