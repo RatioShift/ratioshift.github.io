@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>RatioShift | Developer Tools Hub</title>
+    <title>RatioShift | Fluid Type Calculator</title>
 </head>
 <body>
     <header class="navbar">
@@ -35,29 +35,49 @@
                 <span class="bar"></span>
             </button>
         </div>
-    </header> 
-    
-    <main class="container">
-        <div class="card-header">
-            <h1>Developer Tools</h1>
-            <p>Select a tool to get started with your project.</p>
-        </div>
-        
-        <div class="input-grid">
-            <a href="fluid_Type_Calculator.html" class="tool-link">
-                <div class="calculator-card tool-card">
-                    <span class="tool-icon">Aa</span>
-                    <h3>Fluid Type Calculator</h3>
-                    <p>Generate perfect CSS clamp() functions for responsive typography.</p>
-                </div>
-            </a>
+    </header>
 
-            <div class="calculator-card tool-card disabled">
-                <span class="tool-icon">🏁</span>
-                <h3>Grid Generator</h3>
-                <p>Coming Soon: Visual CSS Grid layout builder.</p>
+    <main class="container">
+        <section class="calculator-card">
+            <div class="card-header">
+                <h1>Fluid Type Calculator</h1>
+                <p>Generate a precise CSS <code>clamp()</code> function for responsive typography.</p>
             </div>
-        </div>
+
+            <div class="input-grid">
+                <div class="input-group">
+                    <label for="minSize">Min Size (px)</label>
+                    <input type="number" id="minSize" value="16">
+                </div>
+                <div class="input-group">
+                    <label for="maxSize">Max Size (px)</label>
+                    <input type="number" id="maxSize" value="48">
+                </div>
+                <div class="input-group">
+                    <label for="minVW">Min Viewport (px)</label>
+                    <input type="number" id="minVW" value="320">
+                </div>
+                <div class="input-group">
+                    <label for="maxVW">Max Viewport (px)</label>
+                    <input type="number" id="maxVW" value="1600">
+                </div>
+                <div class="input-group full-width">
+                    <label for="baseRem">Base REM Size (usually 16)</label>
+                    <input type="number" id="baseRem" value="16">
+                </div>
+            </div>
+
+            <div class="output-section">
+                <div class="stats">
+                    <div>Slope: <span id="slopeOut">0</span>%</div>
+                    <div>Base: <span id="baseOut">0</span>rem</div>
+                </div>
+                <div class="code-result">
+                    <code id="clampCode">clamp(...)</code>
+                    <button id="copyBtn">Copy Code</button>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer class="footer">
@@ -88,7 +108,6 @@
                 </div>
             </div>
         </div>
-        
         <div class="footer-bottom">
             <p>&copy; 2024 Ratio Shift. Built with ⚡ by Al Azmain.</p>
         </div>
