@@ -54,9 +54,9 @@ input:checked + .slider:before { transform: translateX(24px); }
 .container { max-width: 800px; margin: 4rem auto; padding: 0 20px; width: 100%; }
 .calculator-card { background-color: var(--nav-bg); padding: 2rem; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
 .card-header { text-align: center; margin-bottom: 2rem; }
-.input-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+.input-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; width: 100%; }
 .input-group { display: flex; flex-direction: column; gap: 8px; }
-.full-width { grid-column: span 2; }
+.full-width { grid-column: 1 / -1; }
 label { font-weight: 600; font-size: 0.85rem; text-transform: uppercase; }
 input { padding: 12px; border: 2px solid var(--toggle-bg); border-radius: 8px; background: var(--bg-color); color: var(--text-color); }
 input:focus { border-color: var(--accent-color); outline: none; }
@@ -70,21 +70,68 @@ input:focus { border-color: var(--accent-color); outline: none; }
 #clampCode { word-break: break-all; font-size: 0.9rem; }
 #copyBtn { background: var(--accent-color); color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-weight: 600; flex-shrink: 0; }
 
-/* Responsive Logic */
+
+/* --- FINAL RESPONSIVE LOGIC --- */
+
+/* Navbar: Hamburger for Tablet/Mobile */
 @media (max-width: 768px) {
     .mobile-menu-btn { display: flex; }
     .nav-links {
-        display: none; position: absolute; top: 100%; left: 0; width: 100%;
-        background: var(--nav-bg); flex-direction: column; padding: 1rem 0;
-        box-shadow: 0 5px 10px rgba(0,0,0,0.1); transition: none; /* Removed invisible animation */
+        display: none; 
+        position: absolute; 
+        top: 100%; 
+        left: 0; 
+        width: 100%;
+        background: var(--nav-bg); 
+        flex-direction: column; 
+        padding: 1rem 0;
+        gap: 5px;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.1); 
+        transition: none;
     }
     .nav-links.active { display: flex; }
     .nav-links li { width: 100%; text-align: center; padding: 10px 0; }
-    .input-grid { grid-template-columns: 1fr; }
-    .full-width { grid-column: span 1; }
 }
 
-/* Hamburger to X */
+/* Container & Card Centering Fix */
+@media (max-width: 768px) {
+    .container {
+        max-width: 100%;
+        padding: 0 20px;
+        margin: 2rem auto;
+        display: flex;
+        justify-content: center; /* Ensures the card is centered */
+    }
+
+    .calculator-card {
+        width: 100%;
+        max-width: 600px; /* Limits width on tablets so it looks better */
+        margin: 0 auto;
+    }
+}
+
+/* Mobile Adjustments (480px and below) */
+@media (max-width: 480px) {
+    .calculator-card {
+        padding: 1.2rem;
+    }
+
+    .stats {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .code-result {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    #copyBtn {
+        width: 100%;
+    }
+}
+
+/* Hamburger to X Animation */
 .mobile-menu-btn.is-active .bar:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
 .mobile-menu-btn.is-active .bar:nth-child(2) { opacity: 0; }
 .mobile-menu-btn.is-active .bar:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
