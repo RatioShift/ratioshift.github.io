@@ -106,12 +106,11 @@ body, header, .calculator-card, input, .slider, .footer {
 }
 
 /* --- THE FIX: FORCED ACTIVE STATE --- */
-.navbar .nav-links li a.active {
+.nav-links a.active {
     color: var(--accent-color) !important;
     opacity: 1 !important;
     font-weight: 700 !important;
     border-bottom: 2px solid var(--accent-color) !important;
-    padding-bottom: 2px;
 }
 
 /* Nav Actions (Theme + Mobile Btn) */

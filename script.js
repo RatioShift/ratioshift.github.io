@@ -37,36 +37,35 @@ if (menuBtn && navLinks) {
    3. NAV HIGHLIGHTING LOGIC
    ========================================================================== */
 function highlightNav() {
-    const params = new URLSearchParams(window.location.search);
-    const pageParam = params.get('page');
-    const path = window.location.pathname.toLowerCase();
+    const currentUrl = window.location.href.toLowerCase();
+    const links = document.querySelectorAll('.nav-links a');
 
-    // Reset all links
-    document.querySelectorAll('.nav-links a').forEach(link => link.classList.remove('active'));
+    links.forEach(link => {
+        // 1. Remove active from everyone first
+        link.classList.remove('active');
 
-    // Priority 1: Check URL Parameters (Docs/Blog)
-    if (pageParam === 'docs') {
-        document.getElementById('nav-docs')?.classList.add('active');
-    } else if (pageParam === 'blog') {
-        document.getElementById('nav-blog')?.classList.add('active');
-    } 
-    // Priority 2: Check Pathname (About)
-    else if (path.includes('about.html')) {
-        document.getElementById('nav-about')?.classList.add('active');
-    } 
-    // Priority 3: Check for Hub or Specific Calculators
-    else if (
-        path.includes('index.html') || 
-        path.includes('fluid_type_calculator.html') || 
-        path.endsWith('/')
-    ) {
-        document.getElementById('nav-calculators')?.classList.add('active');
-    }
-    else if (path.includes('docs.html')) {
-        document.getElementById('nav-docs')?.classList.add('active');
-    }
+        // 2. Get the absolute URL of the link (The browser converts /about to http://site.com/about)
+        const linkUrl = link.href.toLowerCase();
+
+        // 3. Check for Blog specifically (Query params)
+        if (currentUrl.includes('page=blog') && linkUrl.includes('page=blog')) {
+            link.classList.add('active');
+        } 
+        // 4. Check for other pages
+        else if (!currentUrl.includes('page=blog') && currentUrl.includes(linkUrl)) {
+            // This handles /about, /products, and /documentation
+            link.classList.add('active');
+        }
+        
+        // 5. Special case for Home/Products if path is empty
+        if (window.location.pathname === "/" && linkUrl.endsWith("/products")) {
+             link.classList.add('active');
+        }
+    });
 }
 
+// Run it!
+document.addEventListener('DOMContentLoaded', highlightNav);
 /* /* ==========================================================================
    4. FLUID TYPE CALCULATOR LOGIC
    ========================================================================== */
