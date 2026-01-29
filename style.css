@@ -371,6 +371,72 @@ input:focus {
     font-size: 0.8rem;
     opacity: 0.6;
 }
+/* Container for the dropdown and icon */
+.lang-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    max-width: 160px; /* Match your footer layout */
+}
+
+/* The Icon */
+.lang-icon {
+    position: absolute;
+    left: 12px;
+    pointer-events: none; /* Allows clicks to go through to the dropdown */
+    font-size: 1.1rem;
+    z-index: 5;
+}
+
+/* The Dropdown Box */
+.lang-dropdown {
+    width: 100%;
+    background: var(--bg-color);
+    color: var(--text-color);
+    border: 1px solid var(--toggle-bg);
+    padding: 10px 12px 10px 40px; /* 40px left padding to make room for icon */
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    appearance: none; /* Removes the default browser arrow */
+    -webkit-appearance: none;
+    transition: all 0.3s ease;
+}
+
+/* Custom Arrow (Optional: adds a small down arrow on the right) */
+.lang-wrapper::after {
+    content: "▼";
+    font-size: 0.6rem;
+    position: absolute;
+    right: 12px;
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+.lang-dropdown:hover {
+    border-color: var(--accent-color);
+}
+
+.lang-dropdown:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(var(--accent-rgb), 0.1);
+    outline: none;
+}
+/* The Icon */
+.lang-icon {
+    position: absolute;
+    left: 12px;
+    pointer-events: none;
+    font-size: 1.2rem; /* Adjusted for Material Icons */
+    z-index: 5;
+    filter: sepia(100%) hue-rotate(190deg) saturate(500%);
+    
+    /* THE FIX: Color the icon with your accent variable */
+    color: var(--accent-color);
+}
+
+
 
 /* ==========================================================================
    8. PAGE SPECIFIC (ABOUT / COMING SOON)
