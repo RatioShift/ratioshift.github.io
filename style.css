@@ -676,6 +676,84 @@ input:focus {
     box-shadow: 0 5px 15px rgba(var(--accent-rgb), 0.3);
 }
 
+.post-meta {
+    display: flex;
+    align-items: center; /* Centers everything in the row */
+    flex-wrap: wrap;
+    gap: 10px;
+    font-size: 0.9rem;
+    opacity: 0.7;
+}
+
+/* Color the wrapper instead */
+.meta-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    /* Force the color here */
+    color: var(--accent-color) !important; 
+}
+
+/* Tell the icon to just take whatever color its parent has */
+.meta-item .material-icons {
+    color: inherit !important; 
+    font-size: 1.2rem;
+    line-height: 1;
+    display: block;
+}
+
+/* Ensure the 'min read' text NEXT to it goes back to gray/normal */
+#read-time {
+    color: var(--text-color);
+    opacity: 0.8;
+}
+.material-icons {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    direction: ltr;
+    font-feature-settings: 'liga'; /* This ensures ligatures are on */
+}
+
+/* --- Code and Comparison Styles --- */
+.code-example-box {
+    background: #272822;
+    color: #f8f8f2;
+    padding: 1.5rem;
+    border-radius: 8px;
+    font-family: 'Courier New', monospace;
+    margin: 1.5rem 0;
+    border-left: 4px solid var(--accent-color);
+}
+
+.comparison-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin: 2rem 0;
+}
+
+.comp-card {
+    background: var(--nav-bg);
+    padding: 1.2rem;
+    border-radius: 10px;
+    border: 1px solid var(--toggle-bg);
+}
+
+.comp-card h4 {
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+    color: var(--accent-color);
+}
+
+.comp-card pre {
+    font-size: 0.8rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    background: rgba(0,0,0,0.05);
+    padding: 10px;
+    border-radius: 5px;
+}
+
 /* ==========================================================================
    9. RESPONSIVE DESIGN
    ========================================================================== */
@@ -710,6 +788,15 @@ input:focus {
             margin: 0 auto; /* This forces the flex-box to the center */
         }
 }
+
+
+/* Mobile fix for comparison grid */
+@media (max-width: 600px) {
+    .comparison-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 
 @media (max-width: 480px) {
     .stats { flex-direction: column; gap: 10px; }

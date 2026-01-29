@@ -41,42 +41,69 @@
     <main class="container">
         <article class="blog-post">
             <nav class="breadcrumb">
-                <a href="/blog">Blog</a> / <span>Updates</span>
+                <a href="/blog">Blog</a> / <span>Tutorial</span>
             </nav>
 
             <header class="post-header">
-                <h1 id="post-title">New Tool: Fluid Scale Calculator Released</h1>
+                <h1 id="post-title">Understanding CSS Clamp for Responsive Design</h1>
                 <div class="post-meta">
-                    <span>Published on jan 29, 2026</span> • <span class="meta-item"><span class="material-icons">schedule</span> <span id="read-time"></span></span>
+                    <span>Published on Oct 28, 2024</span> • 
+                    <span class="meta-item">
+                        <span class="material-icons">schedule</span>
+                        <span id="read-time"></span>
+                    </span>
                 </div>
             </header>
 
             <section class="post-content">
-                <p class="lead">We are excited to announce the launch of our first official tool at RatioShift: The <strong>Fluid Scale Calculator</strong>.</p>
+                <p class="lead">Stop fighting with hundreds of media queries. Learn how a single line of CSS can handle responsiveness for every screen size.</p>
                 
-                <p>Responsive design has evolved. We're moving away from fixed breakpoints and toward "Fluid Design," where typography and spacing scale smoothly between screen sizes. However, calculating the <code>clamp()</code> math manually is a headache. That’s why we built this tool.</p>
+                <p>The <code>clamp()</code> function is a CSS game-changer. it allows you to set a value that flows between a minimum and maximum range based on a middle "ideal" value.</p>
 
-                <h3>Why Fluid Scaling?</h3>
-                <p>Traditional media queries create "jumps" in your design. With fluid scaling, your font size might be 16px on a phone and 48px on a desktop, but it transitions <em>perfectly</em> for every pixel in between.</p>
-                
-                <div class="info-box">
-                    <strong>Key Feature:</strong> Our calculator generates the exact CSS <code>clamp()</code> function you need, including the viewport-based slope calculation.
+                <h3>The Syntax</h3>
+                <div class="code-example-box">
+                    <code>font-size: clamp(min, ideal, max);</code>
                 </div>
 
-                <h3>How to use the tool</h3>
-                <ul>
-                    <li><strong>Define your range:</strong> Set your minimum and maximum font sizes.</li>
-                    <li><strong>Set your viewports:</strong> Tell the tool at what screen width the scaling should start and stop.</li>
-                    <li><strong>Copy & Paste:</strong> Grab the generated code and drop it into your CSS variables.</li>
-                </ul>
+                <p>Think of it as a smart safety net. The value will never be smaller than the <strong>min</strong>, and never larger than the <strong>max</strong>, but it will scale perfectly using the <strong>ideal</strong> (usually a <code>vw</code> or viewport width unit) in between.</p>
+
+                <h3>Why not just use Media Queries?</h3>
+                <p>Media queries create "staircase" designs—where the font suddenly jumps from 20px to 30px at a specific breakpoint. <code>clamp()</code> creates a smooth "ramp."</p>
+
+                
+
+                <div class="comparison-grid">
+                    <div class="comp-card">
+                        <h4>Old Way (Media Queries)</h4>
+                        <pre>
+    h1 { font-size: 24px; }
+    @media (min-width: 768px) {
+    h1 { font-size: 32px; }
+    }
+                        </pre>
+                    </div>
+                    <div class="comp-card">
+                        <h4>The RatioShift Way</h4>
+                        <pre>
+    h1 { 
+    font-size: clamp(1.5rem, 2vw + 1rem, 2.5rem); 
+    }
+                        </pre>
+                    </div>
+                </div>
+
+                <h3>The Math Behind the "Ideal" Value</h3>
+                <p>The hardest part of <code>clamp()</code> is the middle value. It requires calculating the <strong>slope</strong> and <strong>intersection</strong> of your screen widths. This is exactly why we built our <a href="/products/fluid-scale-calculator">Fluid Scale Calculator</a>—to do that math for you instantly.</p>
 
                 <div class="cta-block">
-                    <p>Ready to try it out?</p>
-                    <a href="/products/fluid-scale-calculator" class="secondary-btn">Open Fluid Scale Calculator</a>
+                    <h3>Ready to make your site fluid?</h3>
+                    <p>Use our free tool to generate your own clamp functions.</p>
+                    <a href="/products/fluid-scale-calculator" class="secondary-btn">Try the Calculator</a>
                 </div>
             </section>
         </article>
     </main>
+
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-brand">

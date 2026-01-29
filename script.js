@@ -155,3 +155,22 @@ if (docBtn && docSidebar) {
         });
     });
 }
+/* ==========================================================================
+   6. LIVE READ TIME CALCULATOR
+   ========================================================================== */
+function calculateReadTime() {
+    const postContainer = document.querySelector('.post-content');
+    const displayArea = document.getElementById('read-time');
+
+    if (postContainer && displayArea) {
+        const text = postContainer.innerText;
+        const wpm = 200; // Average reading speed
+        const words = text.trim().split(/\s+/).length; // Count words by splitting spaces
+        const time = Math.ceil(words / wpm);
+        
+        displayArea.innerText = `${time} min read`;
+    }
+}
+
+// Run it when the page loads
+document.addEventListener('DOMContentLoaded', calculateReadTime);
