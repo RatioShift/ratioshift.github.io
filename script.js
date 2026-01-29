@@ -48,15 +48,9 @@ function highlightNav() {
         const linkUrl = link.href.toLowerCase();
 
         // 3. Check for Blog specifically (Query params)
-        if (currentUrl.includes('page=blog') && linkUrl.includes('page=blog')) {
-            link.classList.add('active');
-        } 
-        // 4. Check for other pages
-        else if (!currentUrl.includes('page=blog') && currentUrl.includes(linkUrl)) {
-            // This handles /about, /products, and /documentation
-            link.classList.add('active');
+        if (currentPath.includes('/blog')) {
+            document.getElementById('nav-blog')?.classList.add('active');
         }
-        
         // 5. Special case for Home/Products if path is empty
         if (window.location.pathname === "/" && linkUrl.endsWith("/products")) {
              link.classList.add('active');
@@ -161,78 +155,3 @@ if (docBtn && docSidebar) {
         });
     });
 }
-
-/* ==========================================================================
-   5. FULL-SITE TRANSLATION LOGIC
-   ========================================================================== */
-const translations = {
-    'en': {
-        'nav-products': 'Products',
-        'nav-docs': 'Documentation',
-        'nav-blog': 'Blog',
-        'nav-about': 'About Us',
-        'hero-title': 'Developer Tools',
-        'hero-desc': 'Select a tool to get started with your project.',
-        'card-fluid-title': 'Fluid Scale Calculator',
-        'card-fluid-desc': 'Generate CSS clamp() for typography, spacing, and layouts.',
-        'card-grid-title': 'Grid Generator',
-        'card-grid-desc': 'Coming Soon: Visual CSS Grid layout builder.',
-        'footer-desc': 'Precise tools for modern web developers.',
-        'footer-links-title': 'Quick Links',
-        'footer-connect-title': 'Connect',
-        'footer-lang-title': 'Language'
-    },
-    'bn': {
-        'nav-products': 'প্রোডাক্টস',
-        'nav-docs': 'ডকুমেন্টেশন',
-        'nav-blog': 'ব্লগ',
-        'nav-about': 'আমাদের সম্পর্কে',
-        'hero-title': 'ডেভেলপার টুলস',
-        'hero-desc': 'আপনার প্রজেক্ট শুরু করতে একটি টুল সিলেক্ট করুন।',
-        'card-fluid-title': 'ফ্লুইড স্কেল ক্যালকুলেটর',
-        'card-fluid-desc': 'টাইপোগ্রাফি এবং লেআউটের জন্য CSS clamp() জেনারেট করুন।',
-        'card-grid-title': 'গ্রিড জেনারেটর',
-        'card-grid-desc': 'শীঘ্রই আসছে: ভিজ্যুয়াল CSS গ্রিড লেআউট বিল্ডার।',
-        'footer-desc': 'আধুনিক ওয়েব ডেভেলপারদের জন্য সঠিক টুলস।',
-        'footer-links-title': 'প্রয়োজনীয় লিঙ্ক',
-        'footer-connect-title': 'যোগাযোগ',
-        'footer-lang-title': 'ভাষা'
-    }
-};
-
-function applyTranslation(lang) {
-    const dict = translations[lang];
-    
-    // Find every element that has a 'data-i18n' attribute
-    document.querySelectorAll('[data-i18n]').forEach(element => {
-        const key = element.getAttribute('data-i18n');
-        if (dict[key]) {
-            // Check if it's an input placeholder or regular text
-            if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
-                element.placeholder = dict[key];
-            } else {
-                element.textContent = dict[key];
-            }
-        }
-    });
-    
-    // Set the HTML lang attribute for SEO
-    document.documentElement.lang = lang;
-}
-
-// Event Listener for the Dropdown
-const langSelect = document.querySelector('#language-select');
-if (langSelect) {
-    langSelect.addEventListener('change', (e) => {
-        const lang = e.target.value;
-        applyTranslation(lang);
-        localStorage.setItem('preferred-lang', lang);
-    });
-}
-
-// Run on Page Load
-document.addEventListener('DOMContentLoaded', () => {
-    const savedLang = localStorage.getItem('preferred-lang') || 'en';
-    if (langSelect) langSelect.value = savedLang;
-    applyTranslation(savedLang);
-});

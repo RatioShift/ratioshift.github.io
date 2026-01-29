@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+    <title>RatioShift | Developer Tools Hub</title>
+</head>
+<body>
+    <header class="navbar">
+        <div class="nav-logo">
+            <a href="/">
+                <span class="logo-text">Ratio<span>Shift</span></span>
+            </a>
+        </div>
+        <nav class="nav-menu">
+            <ul class="nav-links">
+                <li><a href="/products" id="nav-products">Products</a></li>
+                <li><a href="/documentation" id="nav-docs">Documentation</a></li>
+                <li><a href="/coming-soon?page=blog" id="nav-blog">Blog</a></li>
+                <li><a href="/about" id="nav-about">About Us</a></li>
+            </ul>
+        </nav>
+        <div class="nav-actions">
+            <label class="theme-switch" for="checkbox">
+                <input type="checkbox" id="checkbox" />
+                <div class="slider round">
+                    <span class="icon-sun">☀️</span>
+                    <span class="icon-moon">🌙</span>
+                </div>
+            </label>
+            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle Menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+    </header> 
+    
+<main class="container">
+    <div class="card-header">
+        <h1 id="blog-title">RatioShift Blog</h1>
+        <p id="blog-desc">Insights, tutorials, and updates for modern web developers.</p>
+    </div>
+
+    <div class="blog-grid">
+        <article class="blog-card">
+            <div class="blog-meta">
+                <span class="blog-category">Tutorial</span>
+                <span class="blog-date">Oct 24, 2024</span>
+            </div>
+            <h2>Understanding CSS Clamp for Responsive Design</h2>
+            <p>Learn how to use the clamp() function to create fluid typography that scales perfectly across all screen sizes.</p>
+            <a href="/blog/understanding-css-clamp" class="read-more">Read More →</a>
+        </article>
+
+        <article class="blog-card">
+            <div class="blog-meta">
+                <span class="blog-category">Updates</span>
+                <span class="blog-date">Oct 20, 2024</span>
+            </div>
+            <h2>New Tool: Fluid Scale Calculator Released</h2>
+            <p>We've launched our first major tool to help developers calculate complex fluid scales instantly. Here’s how to use it.</p>
+            <a href="/blog/new-tool-announcement" class="read-more">Read More →</a>
+        </article>
+        
+        <div class="blog-card empty-state">
+            <span class="tool-icon">✍️</span>
+            <h3>More articles coming soon</h3>
+            <p>We are currently writing more helpful content for you. Stay tuned!</p>
+        </div>
+    </div>
+</main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <div class="nav-logo">
+                    <a href="/">
+                        <span class="logo-text">Ratio<span>Shift</span></span>
+                    </a>
+                </div>
+                <p>Precise tools for modern web developers.</p>
+            </div>
+
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="/products">Products</a></li>
+                    <li><a href="/documentation">Documentation</a></li>
+                    <li><a href="/coming-soon?page=blog">Blog</a></li>
+                    <li><a href="/about">About Us</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-social">
+                <h4>Connect</h4>
+                <div class="social-icons">
+                    <a href="https://github.com/RatioShift" target="_blank">GitHub</a>
+                    <a href="https://wa.me/message/6KNXSWCVHWSXH1" target="_blank" id="footer-whatsapp">WhatsApp</a>
+                </div>                
+            </div>
+
+            <div class="language-section">
+                <h4>Language</h4>
+                <div class="lang-wrapper">
+                    <span class="material-icons lang-icon">translate</span>
+                    <select id="language-select" class="lang-dropdown">
+                        <option value="en">English</option>
+                        <!-- <option value="bn">বাংলা (Bangla)</option> -->
+                    </select>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2024 Ratio Shift. Built with ⚡ by Al Azmain.</p>
+        </div>
+    </footer>
+
+    <script src="/script.js"></script>
+</body>
+</html>
