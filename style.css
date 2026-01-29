@@ -376,7 +376,7 @@ input:focus {
     position: relative;
     display: flex;
     align-items: center;
-    max-width: 160px; /* Match your footer layout */
+    max-width: 130px; /* Match your footer layout */
 }
 
 /* The Icon */
@@ -388,29 +388,38 @@ input:focus {
     z-index: 5;
 }
 
-/* The Dropdown Box */
+/* 1. Update the Dropdown Box */
 .lang-dropdown {
     width: 100%;
     background: var(--bg-color);
     color: var(--text-color);
     border: 1px solid var(--toggle-bg);
-    padding: 10px 12px 10px 40px; /* 40px left padding to make room for icon */
+    /* INCREASED PADDING: 40px left for icon, 30px right for arrow */
+    padding: 10px 30px 10px 40px; 
     border-radius: 8px;
     cursor: pointer;
     font-family: 'Inter', sans-serif;
     font-size: 0.9rem;
-    appearance: none; /* Removes the default browser arrow */
+    appearance: none; 
     -webkit-appearance: none;
     transition: all 0.3s ease;
+    /* Prevent text from wrapping or getting too close to the arrow */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-/* Custom Arrow (Optional: adds a small down arrow on the right) */
+/* 2. Update the Custom Arrow */
 .lang-wrapper::after {
-    content: "▼";
-    font-size: 0.6rem;
+    content: "expand_more"; /* Using Material Icon name if you have the font */
+    font-family: 'Material Icons';
+    font-size: 1.1rem;
     position: absolute;
-    right: 12px;
+    right: 10px; /* Positioned clearly on the right */
+    top: 50%;
+    transform: translateY(-50%); /* Perfectly centered vertically */
     pointer-events: none;
+    color: var(--text-color);
     opacity: 0.5;
 }
 
@@ -522,6 +531,16 @@ input:focus {
     .container { margin: 2rem auto; }
     .footer-container { grid-template-columns: 1fr; text-align: center; }
     .footer-brand p { margin: 1rem auto; }
+    .language-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Centers the heading and the wrapper */
+            width: 100%;
+        }
+
+        .lang-wrapper {
+            margin: 0 auto; /* This forces the flex-box to the center */
+        }
 }
 
 @media (max-width: 480px) {
