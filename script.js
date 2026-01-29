@@ -137,3 +137,28 @@ function calculateClamp() {
         document.getElementById('clampCode').innerText = result;
     }
 }
+const docBtn = document.getElementById('doc-menu-btn');
+const docSidebar = document.getElementById('docs-sidebar');
+
+if (docBtn && docSidebar) {
+    docBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        docSidebar.classList.toggle('active');
+        
+        // Switch between Book and Close icon
+        const icon = docBtn.querySelector('.material-icons');
+        if (docSidebar.classList.contains('active')) {
+            icon.textContent = 'close';
+        } else {
+            icon.textContent = 'menu_book';
+        }
+    });
+
+    // Close when clicking a link
+    document.querySelectorAll('.doc-link').forEach(link => {
+        link.addEventListener('click', () => {
+            docSidebar.classList.remove('active');
+            docBtn.querySelector('.material-icons').textContent = 'menu_book';
+        });
+    });
+}

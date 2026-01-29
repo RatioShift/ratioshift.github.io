@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <title>Documentation | Ratio Shift</title>
+    <title>Documentation | RatioShift</title>
 </head>
 <body>
     <header class="navbar">
@@ -16,7 +17,7 @@
         <nav class="nav-menu">
             <ul class="nav-links">
                 <li><a href="index.html" id="nav-calculators">All Calculators</a></li>
-                <li><a href="docs.html" id="nav-docs">Documentation</a></li>
+                <li><a href="docs.html" id="nav-docs" class="active">Documentation</a></li>
                 <li><a href="coming-soon.html?page=blog" id="nav-blog">Blog</a></li>
                 <li><a href="about.html" id="nav-about">About Us</a></li>
             </ul>
@@ -38,7 +39,11 @@
     </header>
 
     <main class="docs-wrapper">
-        <aside class="docs-sidebar">
+        <button class="doc-menu-btn" id="doc-menu-btn" aria-label="Open Documentation Menu">
+            <span class="material-icons">menu_book</span>
+        </button>
+
+        <aside class="docs-sidebar" id="docs-sidebar">
             <div class="sidebar-block">
                 <h4>General</h4>
                 <ul>
@@ -82,22 +87,22 @@
                 
                 <div class="use-case-grid">
                     <div class="use-case-card">
-                        <span class="use-icon">text_fields</span>
+                        <span class="material-icons use-icon">text_fields</span>
                         <h5>Typography</h5>
                         <p>Fluid <code>font-size</code> and <code>line-height</code> for perfect readability.</p>
                     </div>
                     <div class="use-case-card">
-                        <span class="use-icon">space_bar</span>
+                        <span class="material-icons use-icon">space_bar</span>
                         <h5>Spacing</h5>
                         <p>Responsive <code>padding</code> and <code>margin</code> without media queries.</p>
                     </div>
                     <div class="use-case-card">
-                        <span class="use-icon">aspect_ratio</span>
+                        <span class="material-icons use-icon">aspect_ratio</span>
                         <h5>Dimensions</h5>
                         <p>Scale <code>width</code>, <code>height</code>, or <code>gap</code> proportionally.</p>
                     </div>
                     <div class="use-case-card">
-                        <span class="use-icon">rounded_corner</span>
+                        <span class="material-icons use-icon">rounded_corner</span>
                         <h5>UI Details</h5>
                         <p>Even <code>border-radius</code> can grow with the screen size.</p>
                     </div>
@@ -184,7 +189,7 @@
                 <h4>Quick Links</h4>
                 <ul>
                     <li><a href="index.html">All Calculators</a></li>
-                    <li><a href="coming-soon.html?page=docs">Documentation</a></li>
+                    <li><a href="docs.html">Documentation</a></li>
                     <li><a href="coming-soon.html?page=blog">Blog</a></li>
                     <li><a href="about.html">About Us</a></li>
                 </ul>
@@ -199,7 +204,7 @@
         </div>
         
         <div class="footer-bottom">
-            <p>&copy; 2024 Ratio Shift. Built with ⚡ by Al Azmain.</p>
+            <p>&copy; 2026 RatioShift. Built with ⚡ by Al Azmain.</p>
         </div>
     </footer>
 

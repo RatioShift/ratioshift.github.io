@@ -271,6 +271,7 @@ input:focus {
 .button-group {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     gap: 10px;
 }
 
@@ -481,7 +482,7 @@ input:focus {
 
 /* Sidebar Styling */
 .docs-sidebar {
-    width: 240px;
+    width: 200px;
     position: sticky;
     top: 100px; /* Aligns with navbar height */
     height: calc(100vh - 120px);
@@ -681,14 +682,98 @@ input:focus {
     margin-bottom: 5px;
 }
 
-/* --- MOBILE DOCS --- */
+/* Import Icons for the Button */
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+/* --- SIDEBAR BASE (Desktop) --- */
+.docs-sidebar {
+    width: 240px;
+    position: sticky;
+    top: 100px;
+    height: calc(100vh - 120px);
+    overflow-y: auto;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+/* Floating Doc Button - Hidden on Desktop */
+.doc-menu-btn {
+    display: none;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background: var(--accent-color);
+    color: white;
+    border-radius: 50%;
+    border: none;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    z-index: 1001;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.doc-menu-btn:active {
+    transform: scale(0.9);
+}
+
+/* --- MOBILE UPGRADE (Below 900px) --- */
 @media (max-width: 900px) {
-    .docs-wrapper { flex-direction: column; }
-    .docs-sidebar { 
-        width: 100%; 
-        position: static; 
-        height: auto; 
-        border-bottom: 1px solid var(--toggle-bg);
-        padding-bottom: 2rem;
+    .docs-wrapper {
+        flex-direction: column;
+        padding: 1rem 5%;
+    }
+
+    .doc-menu-btn {
+        display: flex; /* Show only on mobile */
+    }
+
+    .docs-sidebar {
+        position: fixed;
+        bottom: 100px;
+        right: 30px;
+        width: 280px;
+        height: auto;
+        max-height: 70vh;
+        background: var(--nav-bg);
+        border: 1px solid var(--toggle-bg);
+        border-radius: 15px;
+        padding: 20px;
+        z-index: 1000;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        
+        /* Initial Hidden State */
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(20px) scale(0.8);
+        transform-origin: bottom right;
+    }
+
+    /* Active State (When button is clicked) */
+    .docs-sidebar.active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0) scale(1);
+    }
+
+    .sidebar-block {
+        margin-bottom: 1.5rem;
+    }
+
+    .sidebar-block h4 {
+        font-size: 0.7rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .sidebar-block a {
+        background: rgba(var(--accent-color-rgb), 0.05);
+        margin-bottom: 8px;
+        padding: 12px;
+        border-radius: 8px;
+        font-weight: 500;
     }
 }
