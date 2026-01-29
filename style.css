@@ -594,6 +594,88 @@ input:focus {
     text-decoration: underline;
 }
 
+/* Blog Post Styling */
+.breadcrumb {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    opacity: 0.6;
+}
+
+.breadcrumb a {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.post-header {
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--toggle-bg);
+    padding-bottom: 1.5rem;
+}
+
+.post-meta {
+    font-size: 0.9rem;
+    opacity: 0.7;
+    margin-top: 0.5rem;
+}
+
+.post-content h3 {
+    margin: 2.5rem 0 1rem;
+    color: var(--accent-color);
+}
+
+.post-content p {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+/* --- FIX: List Positioning --- */
+.post-content ul {
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem; /* Creates space for bullets */
+}
+
+.post-content li {
+    margin-bottom: 0.8rem;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    /* This ensures bullets stay inside the content flow */
+    list-style-position: outside; 
+}
+
+.lead {
+    font-size: 1.25rem !important;
+    font-weight: 500;
+}
+
+.info-box {
+    background: var(--nav-bg);
+    padding: 1.5rem;
+    border-left: 4px solid var(--accent-color);
+    border-radius: 8px;
+    margin: 2rem 0;
+}
+
+.cta-block {
+    text-align: center;
+    background: var(--nav-bg);
+    padding: 3rem;
+    border-radius: 16px;
+    margin-top: 4rem;
+}
+
+/* --- FIX: Button Decoration --- */
+.cta-block .secondary-btn {
+    text-decoration: none !important; /* Removes the underline */
+    display: inline-block; /* Ensures padding/margin work correctly */
+}
+
+/* Optional: Add a hover effect to make it feel like a real button */
+.cta-block .secondary-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(var(--accent-rgb), 0.3);
+}
+
 /* ==========================================================================
    9. RESPONSIVE DESIGN
    ========================================================================== */

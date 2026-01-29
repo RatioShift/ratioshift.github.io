@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+    <title>RatioShift | Developer Tools Hub</title>
+</head>
+<body>
+    <header class="navbar">
+        <div class="nav-logo">
+            <a href="/">
+                <span class="logo-text">Ratio<span>Shift</span></span>
+            </a>
+        </div>
+        <nav class="nav-menu">
+            <ul class="nav-links">
+                <li><a href="/products" id="nav-products">Products</a></li>
+                <li><a href="/documentation" id="nav-docs">Documentation</a></li>
+                <li><a href="/blog" id="nav-blog">Blog</a></li>
+                <li><a href="/about" id="nav-about">About Us</a></li>
+            </ul>
+        </nav>
+        <div class="nav-actions">
+            <label class="theme-switch" for="checkbox">
+                <input type="checkbox" id="checkbox" />
+                <div class="slider round">
+                    <span class="icon-sun">☀️</span>
+                    <span class="icon-moon">🌙</span>
+                </div>
+            </label>
+            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle Menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+    </header> 
+    
+    <main class="container">
+        <article class="blog-post">
+            <nav class="breadcrumb">
+                <a href="/blog">Blog</a> / <span>Updates</span>
+            </nav>
+
+            <header class="post-header">
+                <h1 id="post-title">New Tool: Fluid Scale Calculator Released</h1>
+                <div class="post-meta">
+                    <span>Published on Oct 24, 2024</span> • <span>4 min read</span>
+                </div>
+            </header>
+
+            <section class="post-content">
+                <p class="lead">We are excited to announce the launch of our first official tool at RatioShift: The <strong>Fluid Scale Calculator</strong>.</p>
+                
+                <p>Responsive design has evolved. We're moving away from fixed breakpoints and toward "Fluid Design," where typography and spacing scale smoothly between screen sizes. However, calculating the <code>clamp()</code> math manually is a headache. That’s why we built this tool.</p>
+
+                <h3>Why Fluid Scaling?</h3>
+                <p>Traditional media queries create "jumps" in your design. With fluid scaling, your font size might be 16px on a phone and 48px on a desktop, but it transitions <em>perfectly</em> for every pixel in between.</p>
+                
+                <div class="info-box">
+                    <strong>Key Feature:</strong> Our calculator generates the exact CSS <code>clamp()</code> function you need, including the viewport-based slope calculation.
+                </div>
+
+                <h3>How to use the tool</h3>
+                <ul>
+                    <li><strong>Define your range:</strong> Set your minimum and maximum font sizes.</li>
+                    <li><strong>Set your viewports:</strong> Tell the tool at what screen width the scaling should start and stop.</li>
+                    <li><strong>Copy & Paste:</strong> Grab the generated code and drop it into your CSS variables.</li>
+                </ul>
+
+                <div class="cta-block">
+                    <p>Ready to try it out?</p>
+                    <a href="/products/fluid-scale-calculator" class="secondary-btn">Open Fluid Scale Calculator</a>
+                </div>
+            </section>
+        </article>
+    </main>
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <div class="nav-logo">
+                    <a href="/">
+                        <span class="logo-text">Ratio<span>Shift</span></span>
+                    </a>
+                </div>
+                <p>Precise tools for modern web developers.</p>
+            </div>
+
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="/products">Products</a></li>
+                    <li><a href="/documentation">Documentation</a></li>
+                    <li><a href="/blog">Blog</a></li>
+                    <li><a href="/about">About Us</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-social">
+                <h4>Connect</h4>
+                <div class="social-icons">
+                    <a href="https://github.com/RatioShift" target="_blank">GitHub</a>
+                    <a href="https://wa.me/message/6KNXSWCVHWSXH1" target="_blank" id="footer-whatsapp">WhatsApp</a>
+                </div>                
+            </div>
+
+            <div class="language-section">
+                <h4>Language</h4>
+                <div class="lang-wrapper">
+                    <span class="material-icons lang-icon">translate</span>
+                    <select id="language-select" class="lang-dropdown">
+                        <option value="en">English</option>
+                        <!-- <option value="bn">বাংলা (Bangla)</option> -->
+                    </select>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2024 Ratio Shift. Built with ⚡ by Al Azmain.</p>
+        </div>
+    </footer>
+
+    <script src="/script.js"></script>
+</body>
+</html>
