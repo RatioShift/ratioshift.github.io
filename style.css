@@ -989,6 +989,7 @@ input:focus {
     padding: 15px 25px;
     border-bottom: 1px solid var(--toggle-bg);
     transition: 0.2s;
+    gap: 15px;
 }
 
 .module-item:last-child { border-bottom: none; }
@@ -1117,6 +1118,12 @@ input:focus {
     opacity: 0.6;
 }
 
+.note-link .material-icons {
+    font-size: 18px;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
 /* The Tag Cloud Layout */
 .topic-tags {
     display: flex;
@@ -1224,6 +1231,64 @@ input:focus {
         .related-posts h3 {
             text-align: center; /* Looks better centered on mobile */
         }
+}
+
+
+/* --- MOBILE UPGRADE (Below 900px) --- */
+@media (max-width: 900px) {
+    .docs-wrapper {
+        flex-direction: column;
+        padding: 1rem 5%;
+    }
+
+    .doc-menu-btn {
+        display: flex; /* Show only on mobile */
+    }
+
+    .docs-sidebar {
+        position: fixed;
+        bottom: 100px;
+        right: 30px;
+        width: 280px;
+        height: auto;
+        max-height: 70vh;
+        background: var(--nav-bg);
+        border: 1px solid var(--toggle-bg);
+        border-radius: 15px;
+        padding: 20px;
+        z-index: 1000;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        
+        /* Initial Hidden State */
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(20px) scale(0.8);
+        transform-origin: bottom right;
+    }
+
+    /* Active State (When button is clicked) */
+    .docs-sidebar.active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0) scale(1);
+    }
+
+    .sidebar-block {
+        margin-bottom: 1.5rem;
+    }
+
+    .sidebar-block h4 {
+        font-size: 0.7rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .sidebar-block a {
+        background: rgba(var(--accent-color-rgb), 0.05);
+        margin-bottom: 8px;
+        padding: 12px;
+        border-radius: 8px;
+        font-weight: 500;
+    }
 }
 
 
@@ -1498,59 +1563,21 @@ input:focus {
     transform: scale(0.9);
 }
 
-/* --- MOBILE UPGRADE (Below 900px) --- */
-@media (max-width: 900px) {
-    .docs-wrapper {
-        flex-direction: column;
-        padding: 1rem 5%;
-    }
-
-    .doc-menu-btn {
-        display: flex; /* Show only on mobile */
-    }
-
-    .docs-sidebar {
-        position: fixed;
-        bottom: 100px;
-        right: 30px;
-        width: 280px;
-        height: auto;
-        max-height: 70vh;
-        background: var(--nav-bg);
-        border: 1px solid var(--toggle-bg);
-        border-radius: 15px;
+/* Notebook Dashboard */
+.module-item {
+        flex-direction: column; /* Stack text above the button */
+        align-items: flex-start; /* Align everything to the left */
         padding: 20px;
-        z-index: 1000;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        
-        /* Initial Hidden State */
-        opacity: 0;
-        visibility: hidden;
-        transform: translateY(20px) scale(0.8);
-        transform-origin: bottom right;
     }
 
-    /* Active State (When button is clicked) */
-    .docs-sidebar.active {
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0) scale(1);
+    .note-link, .coming-soon {
+        width: 100%; /* Make button full width on mobile for easier tapping */
+        justify-content: center; /* Center the text/icon inside the button */
+        margin-top: 10px;
+        padding: 12px; /* Bigger tap target for thumbs */
     }
 
-    .sidebar-block {
-        margin-bottom: 1.5rem;
+    .mod-info {
+        font-size: 1rem;
+        line-height: 1.4;
     }
-
-    .sidebar-block h4 {
-        font-size: 0.7rem;
-        margin-bottom: 0.8rem;
-    }
-
-    .sidebar-block a {
-        background: rgba(var(--accent-color-rgb), 0.05);
-        margin-bottom: 8px;
-        padding: 12px;
-        border-radius: 8px;
-        font-weight: 500;
-    }
-}
