@@ -9,6 +9,7 @@
     --toggle-bg: #ccc;
     --bar-color: #333333;
     --card-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    --accent-rgb: 55, 188, 248;
 }
 
 [data-theme="dark"] {
@@ -940,6 +941,91 @@ input:focus {
         flex-direction: column;
     }
 }
+
+/* Notebook Dashboard Styling */
+.notebook-container {
+    margin: 3rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.milestone-block {
+    background: var(--nav-bg);
+    border-radius: 16px;
+    border: 1px solid var(--toggle-bg);
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.milestone-header {
+    background: var(--accent-color);
+    color: white;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.m-number {
+    font-size: 1.5rem;
+    font-weight: 900;
+    background: rgba(255,255,255,0.2);
+    padding: 10px 15px;
+    border-radius: 12px;
+}
+
+.milestone-header h4 { margin: 0; font-size: 1.2rem; }
+.milestone-header p { margin: 5px 0 0 0 !important; font-size: 0.9rem; opacity: 0.9; }
+
+.module-list {
+    padding: 10px 0;
+}
+
+.module-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 25px;
+    border-bottom: 1px solid var(--toggle-bg);
+    transition: 0.2s;
+}
+
+.module-item:last-child { border-bottom: none; }
+.module-item:hover { background: rgba(var(--accent-rgb), 0.05); }
+
+.mod-info { font-weight: 500; font-size: 0.95rem; }
+
+.note-link {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.coming-soon {
+    font-size: 0.8rem;
+    background: #f0f0f0;
+    color: #888;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-style: italic;
+}
+
+/* Status Badge */
+.status-badge {
+    background: #e3f2fd;
+    color: #1976d2;
+    padding: 4px 12px;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
 
 /* ==========================================================================
    9. RESPONSIVE DESIGN
