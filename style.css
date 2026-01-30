@@ -1027,6 +1027,161 @@ input:focus {
 }
 
 
+/* Lock Icon Box */
+/* .lock-icon-box {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 12px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+} */
+
+/* Topics Preview Section */
+/* .topics-preview {
+    padding: 1.5rem 2rem;
+    background: var(--nav-bg);
+}
+
+.topics-preview h5 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.6;
+} */
+
+/* The Tag Cloud Layout */
+/* .topic-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.topic-tags span {
+    background: rgba(var(--accent-rgb), 0.1);
+    color: var(--text-color);
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border: 1px solid var(--toggle-bg);
+    opacity: 0.8;
+}
+
+.coming-soon-text {
+    margin-top: 1.5rem;
+    font-size: 0.85rem;
+    font-style: italic;
+    opacity: 0.5;
+    text-align: center;
+} */
+
+/* Grey placeholder for the locked header */
+/* .milestone-header.placeholder {
+    background: #4a4a4a !important;
+}
+
+.milestone-block.locked {
+    border: 1px dashed #666;
+    margin-top: 2rem;
+} */
+
+
+
+/* Lock Icon Box */
+.lock-icon-box {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 12px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+/* Topics Preview Section */
+.topics-preview {
+    padding: 1.5rem 2rem;
+    background: var(--nav-bg);
+}
+
+.topics-preview h5 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.6;
+}
+
+/* The Tag Cloud Layout */
+.topic-tags {
+    display: flex;
+    flex-wrap: wrap; /* Allows tags to wrap to next line */
+    gap: 10px;
+}
+
+.topic-tags span {
+    background: rgba(var(--accent-rgb), 0.1);
+    color: var(--text-color);
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border: 1px solid var(--toggle-bg);
+    opacity: 0.8;
+}
+
+.coming-soon-text {
+    margin-top: 1.5rem;
+    font-size: 0.85rem;
+    font-style: italic;
+    opacity: 0.5;
+    text-align: center;
+}
+
+/* Grey placeholder for the locked header */
+.milestone-header.placeholder {
+    background: #4a4a4a !important; /* Neutral grey */
+}
+
+.milestone-block.locked {
+    border: 1px dashed #666;
+    margin-top: 2rem;
+}
+
+/* Define the shaking movement */
+@keyframes lockShake {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(-15deg); }
+    50% { transform: rotate(15deg); }
+    75% { transform: rotate(-15deg); }
+    100% { transform: rotate(0deg); }
+}
+
+/* Apply the animation to the icon when the CARD is hovered */
+.milestone-block.locked:hover .lock-icon-box .material-icons {
+    display: inline-block; /* Required for transform to work */
+    animation: lockShake 0.4s ease-in-out;
+    animation-iteration-count: 1;
+    color: #ffcc00; /* Optional: change lock color to gold on hover */
+    transition: color 0.3s ease;
+}
+
+.milestone-block.locked {
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.milestone-block.locked:hover {
+    transform: scale(0.99); /* Slightly shrinks to look like a button being pressed */
+    border-color: var(--accent-color);
+}
+
+
+
 /* ==========================================================================
    9. RESPONSIVE DESIGN
    ========================================================================== */
