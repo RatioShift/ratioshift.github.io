@@ -1234,64 +1234,6 @@ input:focus {
 }
 
 
-/* --- MOBILE UPGRADE (Below 900px) --- */
-@media (max-width: 900px) {
-    .docs-wrapper {
-        flex-direction: column;
-        padding: 1rem 5%;
-    }
-
-    .doc-menu-btn {
-        display: flex; /* Show only on mobile */
-    }
-
-    .docs-sidebar {
-        position: fixed;
-        bottom: 100px;
-        right: 30px;
-        width: 280px;
-        height: auto;
-        max-height: 70vh;
-        background: var(--nav-bg);
-        border: 1px solid var(--toggle-bg);
-        border-radius: 15px;
-        padding: 20px;
-        z-index: 1000;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        
-        /* Initial Hidden State */
-        opacity: 0;
-        visibility: hidden;
-        transform: translateY(20px) scale(0.8);
-        transform-origin: bottom right;
-    }
-
-    /* Active State (When button is clicked) */
-    .docs-sidebar.active {
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0) scale(1);
-    }
-
-    .sidebar-block {
-        margin-bottom: 1.5rem;
-    }
-
-    .sidebar-block h4 {
-        font-size: 0.7rem;
-        margin-bottom: 0.8rem;
-    }
-
-    .sidebar-block a {
-        background: rgba(var(--accent-color-rgb), 0.05);
-        margin-bottom: 8px;
-        padding: 12px;
-        border-radius: 8px;
-        font-weight: 500;
-    }
-}
-
-
 /* Mobile fix for comparison grid */
 @media (max-width: 600px) {
     .comparison-grid {
@@ -1563,8 +1505,66 @@ input:focus {
     transform: scale(0.9);
 }
 
-/* Notebook Dashboard */
-.module-item {
+/* --- MOBILE UPGRADE (Below 900px) --- */
+@media (max-width: 900px) {
+    .docs-wrapper {
+        flex-direction: column;
+        padding: 1rem 5%;
+    }
+
+    .doc-menu-btn {
+        display: flex; /* Show only on mobile */
+    }
+
+    .docs-sidebar {
+        position: fixed;
+        bottom: 100px;
+        right: 30px;
+        width: 280px;
+        height: auto;
+        max-height: 70vh;
+        background: var(--nav-bg);
+        border: 1px solid var(--toggle-bg);
+        border-radius: 15px;
+        padding: 20px;
+        z-index: 1000;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        
+        /* Initial Hidden State */
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(20px) scale(0.8);
+        transform-origin: bottom right;
+    }
+
+    /* Active State (When button is clicked) */
+    .docs-sidebar.active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0) scale(1);
+    }
+
+    .sidebar-block {
+        margin-bottom: 1.5rem;
+    }
+
+    .sidebar-block h4 {
+        font-size: 0.7rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .sidebar-block a {
+        background: rgba(var(--accent-color-rgb), 0.05);
+        margin-bottom: 8px;
+        padding: 12px;
+        border-radius: 8px;
+        font-weight: 500;
+    }
+}
+
+/* --- MOBILE RESPONSIVENESS --- */
+@media (max-width: 700px) {
+    .module-item {
         flex-direction: column; /* Stack text above the button */
         align-items: flex-start; /* Align everything to the left */
         padding: 20px;
@@ -1581,3 +1581,4 @@ input:focus {
         font-size: 1rem;
         line-height: 1.4;
     }
+}
