@@ -193,6 +193,102 @@ input:checked + .slider:before { transform: translateX(24px); }
     box-shadow: var(--card-shadow);
 }
 
+
+/* ==========================================================================
+   9. LIBRARY SECTION STYLES
+   ========================================================================== */
+.library-section {
+    margin-top: 5rem; /* Developer Tools সেকশন থেকে একটু দূরত্ব বজায় রাখার জন্য */
+    border-top: 1px dashed var(--toggle-bg);
+    padding-top: 3rem;
+}
+
+.library-section .card-header {
+    margin-bottom: 2.5rem;
+}
+
+.library-section .card-header h2 {
+    font-size: 2rem;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+}
+
+/* লাইব্রেরি কার্ডের জন্য কাস্টমাইজেশন */
+.library-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+}
+
+.library-card p {
+    font-size: 0.95rem;
+    opacity: 0.8;
+    margin-bottom: 1.5rem;
+    flex-grow: 1; /* ডেসক্রিপশন ছোট-বড় হলেও ব্যাজটিকে নিচে পুশ করবে */
+}
+
+/* কোর্স রিসোর্স ব্যাজ স্টাইল */
+.card-badge {
+    align-self: flex-start;
+    font-size: 0.75rem;
+    font-weight: 700;
+    background: rgba(var(--accent-rgb), 0.15);
+    color: var(--accent-color);
+    padding: 4px 12px;
+    border-radius: 50px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+
+/* ==========================================================================
+   9. NEW LIBRARY SECTION STYLES
+   ========================================================================== */
+
+/* মেইন কন্টেইনারের (.container) সাথে হুবহু মিল রেখে তৈরি */
+.library-container {
+    max-width: 800px;
+    margin: 4rem auto 0 auto; /* ওপরে কোনো অতিরিক্ত মার্জিন নেই, নিচে ফুটার থেকে স্পেস থাকবে */
+    padding: 0;
+    width: 100%;
+}
+
+/* লাইব্রেরি হেডিং এর জন্য কাস্টমাইজেশন */
+.library-container .card-header h2 {
+    font-size: 2.2rem;
+    color: var(--accent-color); /* তোমার থিম অনুযায়ী কালার */
+    margin-bottom: 0.5rem;
+}
+
+/* লাইব্রেরি কার্ডের ভেতরের কন্টেন্ট বিন্যাস */
+.library-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.library-card p {
+    font-size: 0.95rem;
+    opacity: 0.8;
+    margin-bottom: 1.5rem;
+    flex-grow: 1; /* ডেসক্রিপশন ছোট-বড় হলেও ব্যাজটিকে কার্ডের নিচে পুশ করবে */
+}
+
+/* কোর্স রিসোর্স ব্যাজ স্টাইল */
+.card-badge {
+    align-self: flex-start;
+    font-size: 0.75rem;
+    font-weight: 700;
+    background: rgba(var(--accent-rgb), 0.15);
+    color: var(--accent-color);
+    padding: 4px 12px;
+    border-radius: 50px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+
 /* ==========================================================================
    6. CALCULATOR SPECIFIC STYLES
    ========================================================================== */
