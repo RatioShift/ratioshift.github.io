@@ -9,6 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initTheme();
     initNav();
     initCursorGlow();
+    initHeroScrollBehavior();
+    initScrollReveal();
     initTestimonialsSlider();
     initBackToTop();
     initCalculator();
@@ -123,7 +125,7 @@ function initCursorGlow() {
     if (window.matchMedia('(hover: none) and (pointer: coarse)').matches) return;
 
     let glow = document.getElementById('cursorGlow');
-    let dot = document.getElementById('cursorDot');
+    let icon = document.getElementById('cursorIcon');
 
     if (!glow) {
         glow = document.createElement('div');
@@ -132,11 +134,26 @@ function initCursorGlow() {
         document.body.appendChild(glow);
     }
 
-    if (!dot) {
-        dot = document.createElement('div');
-        dot.id = 'cursorDot';
-        dot.className = 'cursor-dot';
-        document.body.appendChild(dot);
+    if (!icon) {
+        icon = document.createElement('div');
+        icon.id = 'cursorIcon';
+        icon.className = 'cursor-icon';
+        icon.innerHTML = `
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="cursorGrad" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
+                        <stop offset="0%" stop-color="#7fee64"/>
+                        <stop offset="100%" stop-color="#00f2fe"/>
+                    </linearGradient>
+                    <filter id="cursorShadow" x="-20%" y="-20%" width="140%" height="140%">
+                        <feDropShadow dx="0" dy="2" stdDeviation="2.5" flood-color="rgba(0, 0, 0, 0.85)"/>
+                        <feDropShadow dx="0" dy="0" stdDeviation="3.5" flood-color="rgba(127, 238, 100, 0.5)"/>
+                    </filter>
+                </defs>
+                <path d="M3.5 2.5L19.5 12.5L11.5 14.5L8.5 21.5L3.5 2.5Z" fill="url(#cursorGrad)" stroke="#090e13" stroke-width="1.8" stroke-linejoin="round" filter="url(#cursorShadow)"/>
+            </svg>
+        `;
+        document.body.appendChild(icon);
     }
 
     let mouseX = -1000;
@@ -151,32 +168,115 @@ function initCursorGlow() {
         if (!isVisible) {
             isVisible = true;
             glow.style.opacity = '1';
-            dot.style.opacity = '1';
+            icon.style.opacity = '1';
         }
-        dot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
+        icon.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
     }, { passive: true });
 
     document.addEventListener('mouseleave', () => {
         isVisible = false;
         glow.style.opacity = '0';
-        dot.style.opacity = '0';
+        icon.style.opacity = '0';
     });
 
     document.addEventListener('mouseenter', () => {
         isVisible = true;
         glow.style.opacity = '1';
-        dot.style.opacity = '1';
+        icon.style.opacity = '1';
+    });
+
+    document.addEventListener('mousedown', () => {
+        icon.classList.add('cursor-active');
+    });
+
+    document.addEventListener('mouseup', () => {
+        icon.classList.remove('cursor-active');
+    });
+
+    // Hover detection for interactive elements
+    const interactiveSelector = 'a, button, input, select, textarea, .blog-card, .tool-link, .shelf-book, [role="button"], label';
+    document.addEventListener('mouseover', (e) => {
+        if (e.target.closest(interactiveSelector)) {
+            icon.classList.add('cursor-hover');
+            glow.classList.add('glow-hover');
+        }
+    });
+
+    document.addEventListener('mouseout', (e) => {
+        if (e.target.closest(interactiveSelector)) {
+            icon.classList.remove('cursor-hover');
+            glow.classList.remove('glow-hover');
+        }
     });
 
     function renderGlow() {
         if (isVisible) {
-            glowX += (mouseX - glowX) * 0.14;
-            glowY += (mouseY - glowY) * 0.14;
+            glowX += (mouseX - glowX) * 0.15;
+            glowY += (mouseY - glowY) * 0.15;
             glow.style.transform = `translate3d(${glowX}px, ${glowY}px, 0)`;
         }
         requestAnimationFrame(renderGlow);
     }
     renderGlow();
+}
+
+/* --------------------------------------------------------------------------
+   4b. HERO SCROLL BEHAVIOR & PARALLAX VANISHING
+   -------------------------------------------------------------------------- */
+function initHeroScrollBehavior() {
+    const scrollPrompt = document.querySelector('.hero-scroll-prompt');
+    const heroContent = document.querySelector('.hero-content');
+
+    window.addEventListener('scroll', () => {
+        const scrolled = window.scrollY;
+
+        // Vanish scroll to explore text and mouse icon as soon as scroll begins
+        if (scrollPrompt) {
+            if (scrolled > 20) {
+                scrollPrompt.classList.add('vanished');
+            } else {
+                scrollPrompt.classList.remove('vanished');
+            }
+        }
+
+        // Smooth parallax fade for hero content as sections slide up over it
+        if (heroContent) {
+            if (scrolled > 0 && scrolled < window.innerHeight) {
+                const factor = scrolled / window.innerHeight;
+                heroContent.style.opacity = Math.max(0, 1 - factor * 1.5);
+                heroContent.style.transform = `translate3d(0, ${scrolled * 0.22}px, 0) scale(${1 - factor * 0.06})`;
+            } else if (scrolled === 0) {
+                heroContent.style.opacity = '1';
+                heroContent.style.transform = 'translate3d(0, 0, 0) scale(1)';
+            }
+        }
+    }, { passive: true });
+}
+
+/* --------------------------------------------------------------------------
+   4c. SCROLL REVEAL (ALL SECTIONS SLIDE UP ONE BY ONE)
+   -------------------------------------------------------------------------- */
+function initScrollReveal() {
+    const revealElements = document.querySelectorAll('.scroll-reveal');
+    if (!revealElements.length) return;
+
+    if (!('IntersectionObserver' in window)) {
+        revealElements.forEach(el => el.classList.add('is-revealed'));
+        return;
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-revealed');
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -40px 0px'
+    });
+
+    revealElements.forEach(el => observer.observe(el));
 }
 
 /* --------------------------------------------------------------------------

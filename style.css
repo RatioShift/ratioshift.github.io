@@ -335,7 +335,32 @@ input:checked + .slider::before {
 }
 
 #explore.container {
-    padding-top: 4.5rem;
+    position: relative;
+    z-index: 2;
+    background: transparent;
+    padding-top: 5rem;
+    margin-top: 0;
+}
+
+/* Staggered Scroll Reveal: Sections Slide Up One by One */
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(45px);
+    transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+}
+
+.scroll-reveal.is-revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .scroll-reveal {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
 }
 
 .card-header {
@@ -376,7 +401,8 @@ input:checked + .slider::before {
     Deep Watery Caustic Gradient + Film Scratch Texture in Website Colors)
    -------------------------------------------------------------------------- */
 .hero-fullscreen {
-    position: relative;
+    position: sticky;
+    top: 0;
     width: 100%;
     min-height: 100vh;
     height: 100vh;
@@ -389,6 +415,7 @@ input:checked + .slider::before {
     padding: 6.5rem 1.5rem 4rem;
     background: #020508;
     isolation: isolate;
+    z-index: 1;
 }
 
 /* Atmospheric Layer 1: Watery Aquatic Backdrop */
@@ -602,9 +629,10 @@ input:checked + .slider::before {
 
 .hero-actions {
     display: flex;
-    gap: 16px;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
     justify-content: center;
-    flex-wrap: wrap;
 }
 
 /* Tactile Pure White Button (As Used Across Site) */
@@ -654,17 +682,18 @@ input:checked + .slider::before {
 
 /* Hero Ghost Button */
 .hero-btn-ghost {
-    height: 48px;
-    padding: 0 28px;
-    background: rgba(255, 255, 255, 0.08);
+    height: 42px;
+    padding: 0 24px;
+    background: rgba(255, 255, 255, 0.07);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.28);
     border-radius: 50px;
-    color: #ffffff;
+    color: rgba(255, 255, 255, 0.85);
     font-family: var(--font-sans);
-    font-size: 0.96rem;
-    font-weight: 700;
+    font-size: 0.88rem;
+    font-weight: 600;
+    margin-top: 2px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -703,16 +732,49 @@ input:checked + .slider::before {
     transition: all var(--transition-fast);
 }
 
+.hero-scroll-prompt {
+    position: absolute;
+    bottom: 26px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    color: rgba(255, 255, 255, 0.82);
+    text-decoration: none;
+    font-family: var(--font-mono);
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    animation: scrollPromptBlink 2.4s ease-in-out infinite;
+    transition: opacity 0.4s ease, transform 0.4s ease, color var(--transition-fast);
+}
+
+@keyframes scrollPromptBlink {
+    0%, 100% { opacity: 0.95; }
+    50% { opacity: 0.28; }
+}
+
 .hero-scroll-prompt:hover {
     color: var(--accent-color);
+}
+
+.hero-scroll-prompt.vanished {
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transform: translateX(-50%) translateY(24px) scale(0.9) !important;
 }
 
 .scroll-mouse-icon {
     width: 22px;
     height: 34px;
-    border: 2px solid rgba(255, 255, 255, 0.6);
+    border: 2px solid rgba(255, 255, 255, 0.65);
     border-radius: 14px;
     position: relative;
+    box-shadow: 0 0 10px rgba(0, 242, 254, 0.2);
 }
 
 .scroll-wheel {
@@ -744,49 +806,85 @@ input:checked + .slider::before {
 }
 
 /* --------------------------------------------------------------------------
-   FLUID CURSOR LIGHTING (Phosphor Lime + Electric Cyan)
+   HIDE REAL OS CURSOR ON DESKTOP & CUSTOM WEBSITE-COLORED MEDIUM CURSOR ICON
    -------------------------------------------------------------------------- */
-.cursor-dot {
+@media (hover: hover) and (pointer: fine) {
+    *, *::before, *::after,
+    html, body, a, button, input, select, textarea, label {
+        cursor: none !important;
+    }
+}
+
+.cursor-icon {
     position: fixed;
-    top: -4px;
-    left: -4px;
-    width: 8px;
-    height: 8px;
-    background: #7fee64;
-    border-radius: 50%;
+    top: 0;
+    left: 0;
+    width: 24px;
+    height: 24px;
     pointer-events: none;
     z-index: 999999;
     opacity: 0;
-    box-shadow: 0 0 10px #7fee64, 0 0 20px rgba(127, 238, 100, 0.8);
-    transition: opacity 0.2s ease;
+    transform-origin: 3px 2px;
+    transition: opacity 0.2s ease, filter 0.2s ease;
     will-change: transform;
+    filter: drop-shadow(0 0 8px rgba(127, 238, 100, 0.6));
+}
+
+.cursor-icon svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.15s var(--ease-spring);
+    transform-origin: 3px 2px;
+}
+
+.cursor-icon.cursor-hover svg {
+    transform: scale(1.25);
+    filter: drop-shadow(0 0 10px #7fee64) drop-shadow(0 0 18px #00f2fe);
+}
+
+.cursor-icon.cursor-active svg {
+    transform: scale(0.85);
 }
 
 .cursor-glow {
     position: fixed;
-    top: -125px;
-    left: -125px;
-    width: 250px;
-    height: 250px;
+    top: -100px;
+    left: -100px;
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
     background: radial-gradient(
         circle at center,
-        rgba(127, 238, 100, 0.18) 0%,
-        rgba(0, 242, 254, 0.14) 35%,
-        rgba(0, 242, 254, 0.05) 55%,
+        rgba(127, 238, 100, 0.22) 0%,
+        rgba(0, 242, 254, 0.16) 35%,
+        rgba(0, 242, 254, 0.04) 55%,
         transparent 75%
     );
     pointer-events: none;
     z-index: 999998;
     opacity: 0;
     filter: blur(16px);
-    transition: opacity 0.3s ease;
+    transition: opacity 0.3s ease, width 0.3s ease, height 0.3s ease;
     will-change: transform;
     mix-blend-mode: screen;
 }
 
+.cursor-glow.glow-hover {
+    width: 260px;
+    height: 260px;
+    top: -130px;
+    left: -130px;
+    background: radial-gradient(
+        circle at center,
+        rgba(0, 242, 254, 0.28) 0%,
+        rgba(127, 238, 100, 0.22) 35%,
+        transparent 75%
+    );
+}
+
 @media (hover: none) and (pointer: coarse) {
-    .cursor-dot, .cursor-glow { display: none !important; }
+    .cursor-icon, .cursor-glow { display: none !important; }
 }
 
 /* Shiny Metal Button (Adam Perlis Tactile Skeuomorphic Button) */
@@ -2155,6 +2253,12 @@ input[type="number"]:focus, input[type="text"]:focus {
 .docs-content {
     padding: 3rem 2.5rem 4rem;
     min-width: 0;
+    background: #111518;
+    border: 1px solid var(--metal-border-subtle);
+    border-radius: var(--card-radius);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255,255,255,0.04);
+    position: relative;
+    z-index: 2;
 }
 .docs-content h1 {
     font-size: clamp(2rem, 4vw, 2.8rem);
