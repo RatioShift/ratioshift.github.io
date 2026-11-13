@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A game-style skill tree of every math topic a CS student needs, built for learners starting in 2027.">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+    <title>The Ultimate Math Roadmap for CS (2027–2029) | Ratio Shift</title>
+    <style>
+:root{--a:var(--accent-color,#007bff);--bg:var(--bg-color,#fff);--card:var(--nav-bg,#f8f9fa);--bd:var(--toggle-bg,#ccc);--tx:var(--text-color,#333);--ok:#22c55e}
+main.rm{max-width:1180px;margin:2rem auto 4rem;padding:0 16px;width:100%}
+.rm h1{font-size:clamp(1.8rem,4.5vw,2.9rem);line-height:1.15;margin-bottom:.6rem}
+.rm .lead{max-width:70ch;opacity:.85;margin-bottom:1.4rem}
+.hud{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin-bottom:14px}
+.hud div{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:10px;text-align:center;font-size:.85rem}
+.hud b{display:block;font-size:1.6rem;color:var(--a)}
+.chk{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:12px 14px;margin-bottom:14px}
+.rm button{font:inherit;color:var(--tx);background:var(--bg);border:1.5px solid var(--bd);border-radius:999px;padding:7px 14px;cursor:pointer}
+.rm button.pri,dialog button.pri{background:var(--a);border-color:var(--a);color:#fff;font-weight:600}
+.rm button:disabled,dialog button:disabled{opacity:.5;cursor:not-allowed}
+.bd{display:flex;flex-wrap:wrap;gap:6px}
+.bd span{font-size:.8rem;padding:4px 10px;border-radius:999px;border:1px dashed var(--bd);filter:grayscale(1);opacity:.55}
+.bd span.on{border:1px solid var(--ok);filter:none;opacity:1}
+.bd small{margin-left:4px;opacity:.7}
+.flt{margin-bottom:26px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
+.chips button.on{background:var(--a);border-color:var(--a);color:#fff}
+.flt label{font-size:.92rem;cursor:pointer}
+#info{font-size:.9rem;opacity:.85;margin-top:6px}
+.tree{position:relative}
+#ln{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;overflow:visible}
+#ln path{fill:none;stroke:var(--bd);stroke-width:2;transition:opacity .2s}
+#ln path.on{stroke:var(--ok)}
+#ln path.open{stroke:var(--a);stroke-dasharray:7 6;animation:fl 1.2s linear infinite}
+#ln path.hl{stroke-width:4;stroke-dasharray:none}
+#ln path.dim{opacity:.12}
+@keyframes fl{to{stroke-dashoffset:-26}}
+.lv{margin-bottom:64px}
+.lv[hidden]{display:none}
+.lv h3{text-align:center;font-size:1.05rem;margin-bottom:16px;position:relative;z-index:2}
+.lv h3 span{display:inline-block;background:var(--a);color:#fff;border-radius:6px;padding:1px 8px;margin-right:8px;font-size:.8rem}
+.lv h3 em{font-style:normal;font-size:.8rem;opacity:.7;margin-left:8px}
+.row{display:flex;flex-wrap:wrap;justify-content:center;gap:22px 14px}
+.nd{width:174px;min-height:74px;padding:10px 12px;text-align:left;font:inherit;color:var(--tx);background:var(--card);border:2px solid var(--bd);border-radius:12px;cursor:pointer;position:relative;z-index:2;display:flex;flex-direction:column;gap:4px;transition:opacity .2s,transform .15s}
+.nd:hover{transform:translateY(-2px)}
+.nd:focus-visible{outline:3px solid var(--a);outline-offset:2px}
+.nd[hidden]{display:none}
+.nd b{font-size:.92rem;line-height:1.25;padding-right:20px}
+.nd small{opacity:.7;font-size:.76rem}
+.nd i{position:absolute;top:8px;right:8px;font-style:normal;font-size:.9rem}
+.nd.open{border-color:var(--a);box-shadow:0 0 0 4px color-mix(in srgb,var(--a) 22%,transparent)}
+.nd.done{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 10%,var(--card))}
+.nd.lock{opacity:.6}
+.nd.opt{border-style:dashed}
+.nd.dim{opacity:.2}
+dialog{margin:auto;width:min(92vw,520px);max-height:88vh;overflow:auto;background:var(--bg);color:var(--tx);border:1px solid var(--bd);border-radius:16px;padding:22px}
+dialog::backdrop{background:rgba(0,0,0,.55)}
+dialog h2{font-size:1.35rem;margin-bottom:4px}
+dialog h4{margin:14px 0 4px}
+dialog ul{padding-left:20px}
+dialog a{color:var(--a)}
+dialog .mt{opacity:.7;font-size:.85rem;margin-bottom:8px}
+.pq{display:inline-block;font-size:.8rem;border:1px solid var(--bd);border-radius:999px;padding:2px 9px;margin:2px 2px 0 0}
+.pq.ok{border-color:var(--ok)}
+.act{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:18px}
+dialog button{font:inherit;color:var(--tx);background:var(--bg);border:1.5px solid var(--bd);border-radius:999px;padding:7px 16px;cursor:pointer}
+.src{font-size:.85rem;opacity:.75;max-width:80ch;margin:0 auto}
+#ts{position:fixed;left:50%;bottom:24px;transform:translate(-50%,40px);background:var(--a);color:#fff;padding:10px 18px;border-radius:999px;opacity:0;transition:.3s;z-index:3000;pointer-events:none}
+#ts.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:560px){.nd{width:calc(50% - 8px)}.row{gap:18px 10px}}
+@media(prefers-reduced-motion:reduce){#ln path.open{animation:none}.nd{transition:none}}
+    
+/* 2027–2029 Math Roadmap: responsive and focus-mode refinements */
+main.rm{max-width:1240px;padding-inline:clamp(14px,3.2vw,34px);margin-block:clamp(1.25rem,3vw,2.5rem) 4rem}
+.rm .lead{font-size:clamp(.98rem,1.4vw,1.1rem);line-height:1.75}
+.hud{grid-template-columns:repeat(5,minmax(0,1fr))}
+.hud div{min-width:0;padding:clamp(9px,1.5vw,15px)}
+.hud b{font-size:clamp(1.25rem,2.6vw,1.8rem)}
+.chk{align-items:center}.chk #nx{flex:1 1 190px}
+.flt{padding:clamp(12px,2vw,20px);border:1px solid var(--bd);border-radius:16px;background:var(--card)}
+.flt>label{display:inline-flex;align-items:center;gap:8px;margin-top:8px}
+.chips button{min-height:40px;padding:8px 15px;font-weight:650;transition:background .18s,border-color .18s,transform .18s}
+.chips button:hover{transform:translateY(-1px)}
+.chips button.on{box-shadow:0 0 0 3px color-mix(in srgb,var(--a) 20%,transparent)}
+#info{line-height:1.55}.tree{isolation:isolate}
+.lv{margin-bottom:clamp(36px,5vw,64px)}
+.row{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,205px),1fr));gap:14px;align-items:stretch}
+.nd{width:100%;min-width:0;min-height:104px;padding:13px 14px;border-radius:14px;overflow-wrap:anywhere}
+.nd b{font-size:.96rem;line-height:1.35}.nd small{line-height:1.4}
+.nd.route-node{opacity:1;border-color:var(--a);background:color-mix(in srgb,var(--a) 8%,var(--card));box-shadow:0 0 0 2px color-mix(in srgb,var(--a) 15%,transparent),0 8px 22px color-mix(in srgb,var(--a) 12%,transparent);transform:translateY(-2px)}
+.nd.goal-node{border-width:2.5px;border-color:var(--a);box-shadow:0 0 0 4px color-mix(in srgb,var(--a) 24%,transparent),0 10px 28px color-mix(in srgb,var(--a) 18%,transparent)}
+.nd.route-muted{opacity:.13;filter:grayscale(.85)}
+#ln path.route-edge{stroke:var(--a);stroke-width:2.8;opacity:.88}
+#ln path.dim{opacity:.07}#ln path.hl{stroke-width:5;opacity:1}
+.roadmap-audit{margin:26px 0 30px;padding:clamp(16px,2.5vw,24px);border:1px solid var(--bd);border-radius:18px;background:var(--card)}
+.roadmap-audit h2,.related-posts h2{font-size:clamp(1.2rem,2vw,1.55rem);margin-bottom:10px}
+.roadmap-audit p{line-height:1.7;opacity:.9}
+.audit-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:14px}
+.audit-item{padding:13px;border:1px solid var(--bd);border-radius:12px;background:var(--bg);min-width:0}
+.audit-item b{display:block;margin-bottom:4px}.audit-item p{font-size:.9rem}
+.related-posts{margin:34px 0 26px}
+.related-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.related-card{display:flex;flex-direction:column;gap:8px;min-width:0;padding:17px;border:1px solid var(--bd);border-radius:15px;background:var(--card);text-decoration:none;color:var(--tx);transition:transform .18s,border-color .18s,box-shadow .18s}
+.related-card:hover{transform:translateY(-3px);border-color:var(--a);box-shadow:var(--card-shadow)}
+.related-card .tag{font-size:.75rem;font-weight:700;color:var(--a);text-transform:uppercase;letter-spacing:.06em}
+.related-card b{font-size:1rem;line-height:1.35}.related-card p{font-size:.88rem;opacity:.76;line-height:1.55}
+.related-card span:last-child{margin-top:auto;color:var(--a);font-weight:700;font-size:.88rem}
+.rm button:focus-visible,.related-card:focus-visible{outline:3px solid var(--a);outline-offset:3px}
+@media(max-width:760px){.hud{grid-template-columns:repeat(3,minmax(0,1fr))}.related-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:520px){
+main.rm{padding-inline:13px}.hud{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.chk{gap:10px}.chk #ci{width:100%}.bd{width:100%}
+.chips{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+.chips button{border-radius:12px;padding:8px 9px;font-size:.84rem}
+.row{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.nd{min-height:116px;padding:11px 10px}.nd b{font-size:.87rem;padding-right:15px}.nd small{font-size:.72rem}
+.audit-grid,.related-grid{grid-template-columns:1fr}.lv{margin-bottom:36px}.lv h3 em{display:block;margin:5px 0 0}
+}
+@media(max-width:350px){.row{grid-template-columns:1fr}.nd{min-height:88px}}
+@media(prefers-reduced-motion:reduce){.nd.route-node,.related-card,.chips button{transition:none;transform:none}}
+
+    
+/* Responsive level cards and per-level My Notes links */
+.level-head{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;margin-bottom:16px}
+.lv .level-head h3{margin:0;text-align:center}
+.level-notes{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:38px;padding:7px 13px;border:1px solid var(--a);border-radius:999px;background:color-mix(in srgb,var(--a) 8%,var(--card));color:var(--a);font-size:.84rem;font-weight:700;text-decoration:none;white-space:nowrap}
+.level-notes:hover{background:var(--a);color:#fff}
+.level-notes.disabled{opacity:.55;border-style:dashed;cursor:not-allowed}
+.lv .row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;align-items:stretch;width:100%}
+.lv .nd{box-sizing:border-box;width:100%;min-width:0;max-width:100%;min-height:112px;height:100%;overflow-wrap:anywhere;word-break:normal;white-space:normal}
+.lv .nd b{display:block;max-width:100%;line-height:1.35;overflow-wrap:anywhere}
+.lv .nd small{display:block;max-width:100%;line-height:1.4}
+@media(max-width:1000px){.lv .row{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:700px){
+  .lv .row{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+  .lv .nd{min-height:120px;padding:12px}
+  .level-head{gap:9px}
+}
+@media(max-width:380px){
+  .lv .row{grid-template-columns:minmax(0,1fr)}
+  .lv .nd{min-height:88px}
+  .level-head{flex-direction:column}
+}
+
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <div class="nav-logo"><a href="/"><span class="logo-text">Ratio<span>Shift</span></span></a></div>
+        <nav class="nav-menu">
+            <ul class="nav-links">
+                <li><a href="/products" id="nav-products">Products</a></li>
+                <li><a href="/documentation" id="nav-docs">Documentation</a></li>
+                <li><a href="/blog" id="nav-blog">Blog</a></li>
+                <li><a href="/about" id="nav-about">About Us</a></li>
+            </ul>
+        </nav>
+        <div class="nav-actions">
+            <label class="theme-switch" for="checkbox">
+                <input type="checkbox" id="checkbox" />
+                <div class="slider round"><span class="icon-sun">☀️</span><span class="icon-moon">🌙</span></div>
+            </label>
+            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle Menu"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
+        </div>
+    </header>
+
+    <main class="rm">
+        <nav class="breadcrumb"><a href="/blog">Blog</a> / <span>Roadmap</span></nav>
+        <h1>The Ultimate Math Roadmap for CS, 2027–2029</h1>
+        <p class="lead">Every node is a mathematics topic or mathematical foundation used in computer science. A topic unlocks only when its mathematical prerequisites are complete. Choose an application path to highlight the relevant mathematics, and track your progress as you learn.</p>
+
+        <section class="hud" aria-label="Your progress">
+            <div><b id="xp">0</b>XP</div>
+            <div><b id="pc">0%</b>Complete</div>
+            <div><b id="st">0</b>Current streak</div>
+            <div><b id="bs">0</b>Best streak</div>
+            <div><b id="dy">0</b>Total study days</div>
+        </section>
+
+        <div class="chk">
+            <button id="ci" class="pri">Check in today (+10 XP)</button>
+            <span id="nx"></span>
+            <div class="bd" id="bd"></div>
+        </div>
+
+        <section class="flt" aria-label="Filters">
+            <div class="chips" id="chips" aria-label="Choose a career roadmap"></div>
+            <p class="filter-hint">Choose a path to spotlight its required topics and prerequisites. Other branches will fade into the background; select “All topics” to restore the full map.</p>
+            <label><input type="checkbox" id="op" checked aria-label="Show optional math-lover branches"> Show optional math-lover branches</label>
+            <p id="info"></p>
+        </section>
+
+        <div class="tree" id="tree"><svg id="ln" aria-hidden="true"></svg><div id="lvls"></div></div>
+
+
+        <section class="roadmap-audit" aria-labelledby="audit-title">
+            <h2 id="audit-title">How to follow this roadmap</h2>
+            <p>The sequence is a flexible learning map, not a strict university syllabus. Finish the prerequisite topics shown on each node before moving forward. Week estimates assume roughly 8 focused study hours per week; adjust them to your own pace and course requirements.</p>
+            <div class="audit-grid">
+                <article class="audit-item"><b>Foundations first</b><p>Build algebra, functions, trigonometry, logic and proof skills before moving into calculus, linear algebra, probability and algorithms.</p></article>
+                <article class="audit-item"><b>Career paths are selective</b><p>AI/ML, Data Science, Competitive Programming, Systems, Security, Graphics and Theory highlight different topic subsets and shared prerequisites.</p></article>
+                <article class="audit-item"><b>Learn by doing</b><p>For every topic, solve problems, write short proofs or implement a small experiment. Reading alone is not enough to build practical fluency.</p></article>
+                <article class="audit-item"><b>Optional means optional</b><p>Real analysis, abstract algebra, measure-theoretic probability and formal proofs are valuable depth branches, but most CS learners can postpone them until a goal requires them.</p></article>
+            </div>
+        </section>
+        <section class="related-posts" aria-labelledby="related-title">
+            <h2 id="related-title">Keep learning — related articles</h2>
+            <div class="related-grid">
+                <a class="related-card" href="/blog/web-development-roadmap/"><span class="tag">Roadmap</span><b>The Ultimate Roadmap for Web Development</b><p>Explore a structured path through frontend, backend and practical web development skills.</p><span>Explore article →</span></a>
+                <a class="related-card" href="/blog/understanding-css-clamp/"><span class="tag">Tutorial</span><b>Understanding CSS Clamp for Responsive Design</b><p>Learn how fluid sizing adapts smoothly across mobile, tablet and desktop screens.</p><span>Read article →</span></a>
+                <a class="related-card" href="/blog/programming-hero-bootcamp/"><span class="tag">Learning notes</span><b>My Programming Hero Journey & Notebook</b><p>Browse organized programming notes and follow a practical learning journey.</p><span>Open notebook →</span></a>
+            </div>
+        </section>
+
+        <p class="src">How this was built: topic order follows the ACM/IEEE math guidance for CS, MIT 6.042 and 18.06, the USACO Guide and Codeforces roadmaps for competitive programming, the dair-ai Mathematics-for-ML list, and practitioner write-ups on math for LLMs and system design (2025–2026). Time estimates are rough, based on about 8 hours of study per week. Progress is saved in your browser only.</p>
+        <p class="src" style="margin-top:14px"><button id="rs">Reset my progress</button></p>
+    </main>
+
+    <dialog id="dlg"></dialog>
+    <div id="ts" role="status"></div>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <div class="nav-logo"><a href="/"><span class="logo-text">Ratio<span>Shift</span></span></a></div>
+                <p>Precise tools for modern web developers.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="/products">Products</a></li>
+                    <li><a href="/documentation">Documentation</a></li>
+                    <li><a href="/blog">Blog</a></li>
+                    <li><a href="/about">About Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <h4>Connect</h4>
+                <div class="social-icons">
+                    <a href="https://github.com/RatioShift" target="_blank">GitHub</a>
+                    <a href="https://wa.me/message/6KNXSWCVHWSXH1" target="_blank" id="footer-whatsapp">WhatsApp</a>
+                </div>
+            </div>
+            <div class="language-section">
+                <h4>Language</h4>
+                <div class="lang-wrapper">
+                    <span class="material-icons lang-icon">translate</span>
+                    <select id="language-select" class="lang-dropdown"><option value="en">English</option></select>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom"><p>&copy; 2026 Ratio Shift. Built with ⚡ by Al Azmain.</p></div>
+    </footer>
+
+    <script>const currentPath = window.location.pathname.toLowerCase();</script>
+    <script src="/script.js"></script>
+    <script>
+(()=>{
+const $=s=>document.getElementById(s),K='rs-math-v1';
+const LV=['','Foundations','Core Toolkit','CS Mathematics','Applied Depth','Specialization','Boss Levels','Bonus: Math-Lover Side Quests'];
+/*
+ * MY NOTES — paste your own Google Drive share links here as you complete each level.
+ * Example: 1: 'https://drive.google.com/drive/folders/YOUR_FOLDER_ID'
+ * Keep '' until you have a link. Each level has its own independent notes link.
+ */
+const LEVEL_NOTES_LINKS = {
+  1: '',
+  2: '',
+  3: '',
+  4: '',
+  5: '',
+  6: '',
+  7: ''
+};
+const notesControl = level => {
+  const url = (LEVEL_NOTES_LINKS[level] || '').trim();
+  if (/^https:\/\/drive\.google\.com\/(drive\/folders\/|file\/d\/|document\/d\/|document\/u\/\d+\/)/.test(url)) {
+    return `<a class="level-notes" href="${url.replace(/&/g,'&amp;').replace(/"/g,'&quot;')}" target="_blank" rel="noopener noreferrer" aria-label="Open My Notes for ${LV[level]}">📓 My Notes ↗</a>`;
+  }
+  return `<button class="level-notes disabled" type="button" disabled title="Add this level's Google Drive link in LEVEL_NOTES_LINKS in the page code">📓 My Notes</button>`;
+};
+const GL={'*':'All topics',c:'Core CSE',m:'AI / ML',d:'Data Science',p:'Competitive Programming',s:'System Design',x:'Security & Crypto',g:'Graphics & Games',t:'Theory & Research'};
+const RW=[[3,'Spark','⚡'],[7,'Flame','🔥'],[14,'Hunter','🎯'],[30,'Monk','🧘'],[60,'Titan','🏔️'],[100,'Legend','👑']];
+/* id¦level¦title¦prereqs¦goal tags¦weeks¦why¦topics¦resources */
+const R=`alg¦1¦Algebra & Functions¦¦*¦3¦Fluency here makes every later topic easier.¦Exponents and logarithms|Polynomials and functions|Inequalities|Summation notation|Graphing functions¦Khan Academy Math::https://www.khanacademy.org/math
+trig¦1¦Trig & Coordinate Geometry¦alg¦g¦2¦Angles, circles and vectors in the plane, the base of graphics and signals.¦Sine, cosine, tangent|Radians and the unit circle|Distance and lines|Conic basics¦Khan Academy Trigonometry::https://www.khanacademy.org/math/trigonometry
+logic¦1¦Logic, Sets & Functions¦¦cpxst¦2¦The language of proofs and of Boolean thinking in code.¦Propositions and truth tables|Quantifiers|Sets, relations, functions|Boolean algebra¦Book of Proof (free)::https://www.people.vcu.edu/~rhammack/BookOfProof/
+calc¦2¦Calculus I¦alg,trig¦cmdgt¦5¦Rates of change and accumulation, the engine of optimization.¦Limits and continuity|Derivatives and the chain rule|Integrals|Taylor series|Single-variable optimization¦3Blue1Brown, Essence of Calculus::https://www.3blue1brown.com/topics/calculus;;MIT OCW Single Variable Calculus::https://ocw.mit.edu/courses/18-01sc-single-variable-calculus-fall-2010/
+proof¦2¦Proofs & Induction¦logic¦cpxst¦3¦Read and write rigorous arguments. Induction proves algorithm correctness.¦Direct proof and contradiction|Induction and strong induction|Well-ordering|Loop invariants¦MIT 6.042J Mathematics for CS::https://ocw.mit.edu/courses/6-042j-mathematics-for-computer-science-spring-2015/;;Free textbook PDF::https://courses.csail.mit.edu/6.042/spring18/mcs.pdf
+count¦2¦Counting & Combinatorics¦logic,alg¦cdpst¦4¦How many ways? The bridge to probability and complexity.¦Sum and product rules|Permutations and combinations|Binomial theorem|Inclusion-exclusion|Pigeonhole principle¦Competitive Programmer’s Handbook::https://cses.fi/book/book.pdf
+ntb¦2¦Modular Arithmetic¦logic¦pxst¦3¦Clock arithmetic hides inside hashing, random generators and crypto.¦Divisibility and primes|GCD and Euclid|Modular arithmetic|Fast exponentiation¦cp-algorithms::https://cp-algorithms.com
+la¦3¦Linear Algebra I¦alg¦cmdgt¦6¦Vectors and matrices: the data structure of AI, graphics and graph algorithms.¦Vectors and dot products|Matrices and Ax = b|Gaussian elimination|Vector spaces and rank|Determinants¦3Blue1Brown, Essence of Linear Algebra::https://www.3blue1brown.com/topics/linear-algebra;;MIT 18.06, Gilbert Strang::https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/
+prob¦3¦Discrete Probability¦count¦cmdpst¦4¦Events, expectation and Bayes: your first model of uncertainty.¦Sample spaces and events|Conditional probability and Bayes|Random variables|Linearity of expectation|Birthday paradox¦Harvard Stat 110::https://projects.iq.harvard.edu/stat110
+graph¦3¦Graph Theory¦proof,count¦cpst¦4¦Networks, dependencies and maps: graphs are everywhere in CS.¦Paths, cycles, trees|Connectivity and bipartite graphs|Coloring and planarity|Matchings¦Erickson, Algorithms (free)::https://jeffe.cs.illinois.edu/teaching/algorithms/
+asym¦3¦Asymptotics & Recurrences¦proof,calc¦cpst¦3¦Measure algorithms: Big-O, solving T(n) and amortized thinking.¦Big-O, Omega, Theta|Recurrences and the Master theorem|Series and sums|Amortized analysis¦Erickson, Algorithms (free)::https://jeffe.cs.illinois.edu/teaching/algorithms/
+la2¦4¦Linear Algebra II¦la¦mdg¦5¦Eigenvalues and SVD: how data is compressed, ranked and rotated.¦Eigenvalues and eigenvectors|Orthogonality and projections|SVD and PCA|Positive definite matrices¦MIT 18.065 Matrix Methods::https://ocw.mit.edu/courses/18-065-matrix-methods-in-data-analysis-signal-processing-and-machine-learning-spring-2018/
+mvc¦4¦Multivariable Calculus¦calc,la¦mdg¦4¦Gradients and Jacobians: how every neural network learns.¦Partial derivatives|Gradient, Jacobian, Hessian|Multivariable chain rule|Multiple integrals|Lagrange multipliers¦Matrix Calculus for Deep Learning::https://explained.ai/matrix-calculus/
+rv¦4¦Continuous Probability¦prob,calc¦mds¦4¦Distributions, variance and the law of large numbers.¦PDF and CDF|Normal, exponential, Poisson|Variance and covariance|LLN and CLT|Concentration bounds¦Harvard Stat 110::https://projects.iq.harvard.edu/stat110
+autom¦4¦Automata & Computability¦proof¦ct¦4¦What can machines compute at all? Regex, parsers and the halting problem.¦DFA, NFA and regex|Context-free grammars|Turing machines|Decidability¦Sipser, Introduction to the Theory of Computation (book)
+algd¦4¦Algorithm-Design Math¦asym,graph,proof¦cpt¦5¦Greedy proofs, dynamic programming, shortest paths and flows.¦Greedy exchange arguments|Dynamic programming|Shortest paths|Max-flow min-cut|Intro to linear programming¦USACO Guide::https://usaco.guide;;CLRS (book)
+ntadv¦4¦Number Theory II¦ntb,proof¦px¦4¦Primes, Euler and CRT: the math under RSA and many contest problems.¦Modular inverses|Chinese Remainder Theorem|Euler’s theorem|Primality tests|Sieve methods¦cp-algorithms::https://cp-algorithms.com
+stat¦5¦Statistics & Inference¦rv¦dms¦5¦Turn data into decisions: estimation, testing and A/B tests.¦Estimators and MLE|Confidence intervals|Hypothesis tests|Bayesian inference|Regression¦Bayes Rules! (free)::https://www.bayesrulesbook.com;;All of Statistics (book)
+opt¦5¦Optimization¦mvc,la2¦md¦5¦Gradient descent, convexity and why training converges.¦Convex sets and functions|Gradient descent and momentum|SGD and Adam|Constraints and duality¦Convex Optimization, Boyd (free)::https://web.stanford.edu/~boyd/cvxbook/
+info¦5¦Information Theory¦rv¦ms¦3¦Entropy, KL divergence and cross-entropy: the loss behind LLMs and compression.¦Entropy|Cross-entropy and KL divergence|Mutual information|Compression and coding¦MacKay, Information Theory (free)::http://www.inference.org.uk/itila/
+mc¦5¦Markov Chains & Randomness¦rv,la2¦smt¦4¦Random walks, PageRank and randomized algorithms.¦Markov chains|Stationary distributions|Random walks|Randomized algorithms|Hashing probability¦Probability and Computing, Mitzenmacher and Upfal (book)
+cpm¦5¦Contest Math Toolkit¦ntadv,algd¦p¦5¦The extras that separate Div. 2 from Div. 1.¦Matrix exponentiation|FFT and NTT|Game theory (Nim, Grundy)|Probability DP|Computational geometry¦cp-algorithms::https://cp-algorithms.com;;CSES Problem Set::https://cses.fi/problemset/
+gfxm¦5¦Geometry for Graphics¦la2,trig¦g¦4¦Transforms, quaternions and ray math for games and 3D.¦Affine and projective transforms|Quaternions|Ray-object intersection|Barycentric coordinates|Curves and splines¦Immersive Linear Algebra::http://immersivemath.com/ila/index.html
+mlm¦6¦ML Math in Practice¦opt,stat¦md¦6¦Derive regression, PCA and backprop by hand, then code them.¦Backpropagation|Regression and regularization|Probabilistic models|Bias-variance trade-off¦Mathematics for ML (free)::https://mml-book.com;;dair-ai Mathematics-for-ML::https://github.com/dair-ai/Mathematics-for-ML
+dlm¦6¦Deep Learning & LLM Math¦mlm,info¦m¦6¦Attention, embeddings, softmax and LoRA: the math of modern models.¦Softmax and cross-entropy|Attention as matrix products|Embeddings and cosine similarity|Low-rank adaptation (LoRA)|High-dimensional probability¦Little Book of Maths for LLMs::https://little-book-of.github.io/maths-for-llms;;Deep Learning book, Part I::https://www.deeplearningbook.org
+sysm¦6¦Systems Math¦mc,stat¦s¦4¦Back-of-envelope math for scale: hashing, Bloom filters, queues.¦Consistent hashing|Bloom filter false-positive rate|Little’s Law and queueing|Percentiles and tail latency|Capacity planning¦Designing Data-Intensive Applications (book)
+cry¦6¦Cryptography Math¦ntadv,abs¦x¦5¦RSA, Diffie-Hellman, elliptic curves and a taste of lattices.¦RSA and discrete logs|Diffie-Hellman|Elliptic curves|Security proofs for hashes and MACs|Post-quantum lattices¦Boneh and Shoup, Applied Cryptography (free)::https://toc.cryptobook.us
+cplx¦6¦Complexity Theory¦autom,algd¦ct¦5¦P vs NP, reductions and hardness.¦P, NP, NP-complete|Reductions|Approximation algorithms|Randomized and space classes¦Sipser (book)
+numer¦6¦Numerical Methods¦la2,mvc¦mdg¦4¦Floating point, stability and solvers: why correct-on-paper code breaks.¦Floating-point error|Root finding and Newton’s method|Numerical linear algebra|Interpolation|ODE solvers¦fast.ai Computational Linear Algebra::https://github.com/fastai/numerical-linear-algebra
+real¦7¦Real Analysis¦mvc,proof¦t¦6¦Rigorous calculus: epsilon-delta, sequences and convergence. Best after proofs.¦Sequences and limits|Continuity and compactness|Rigorous differentiation and integration|Series convergence¦Understanding Analysis, Abbott (book)
+abs¦7¦Abstract Algebra¦ntadv,proof¦xt¦6¦Groups, rings and fields: the structure behind crypto and coding theory.¦Groups and subgroups|Rings and fields|Finite fields|Galois theory intro¦Judson, Abstract Algebra (free)::https://abstract.ups.edu/
+ode¦7¦Differential Equations¦mvc,la2¦g¦4¦Model change over time: physics engines and dynamics.¦First-order ODEs|Linear systems|Stability|Numerical solutions¦MIT 18.03::https://ocw.mit.edu/courses/18-03-differential-equations-spring-2010/
+cx¦7¦Complex Analysis & Fourier¦mvc¦gm¦4¦Fourier methods for audio, images and the FFT.¦Complex numbers|Fourier series and transform|Convolution|Sampling theorem¦3Blue1Brown::https://www.3blue1brown.com
+meas¦7¦Measure-Theoretic Probability¦real,rv,proof¦t¦6¦The foundation of modern probability and stochastic processes.¦Sigma-algebras|Lebesgue integral|Convergence of random variables|Martingales¦Probability Theory (book)
+lean¦7¦Formal Proofs with Lean 4¦autom,proof¦t¦4¦Machine-checked math and verified software, a growing frontier.¦Type theory basics|Tactics|Formalizing proofs|Verified programs¦Lean community::https://leanprover-community.github.io/`;
+const N=R.split('\n').map(r=>{const [id,l,t,p,g,w,d,tp,rs]=r.split('¦');return{id,l:+l,t,p:p?p.split(','):[],g,w:+w,d,tp:tp.split('|'),rs:rs?rs.split(';;').map(x=>x.split('::')):[],o:l==='7'}});
+const M=Object.fromEntries(N.map(n=>[n.id,n]));
+let S={};try{S=JSON.parse(localStorage.getItem(K))||{}}catch(e){}
+S=Object.assign({xp:0,done:{},last:'',streak:0,best:0,days:0},S);
+const sv=()=>{try{localStorage.setItem(K,JSON.stringify(S))}catch(e){}};
+const ds=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+const td=()=>ds(new Date()),yd=()=>{const d=new Date();d.setDate(d.getDate()-1);return ds(d)};
+const cur=()=>S.last===td()||S.last===yd()?S.streak:0;
+const un=n=>n.p.every(p=>S.done[p]);
+let goal='*',showOpt=true;
+const anc=(id,s=new Set())=>{M[id].p.forEach(p=>{if(!s.has(p)){s.add(p);anc(p,s)}});return s};
+const rel=()=>{if(goal==='*')return null;const s=new Set();N.forEach(n=>{if(n.o&&!showOpt)return;if(n.g==='*'||n.g.includes(goal)){s.add(n.id);anc(n.id).forEach(a=>s.add(a))}});return s};
+const tt=m=>{const t=$('ts');t.textContent=m;t.className='show';clearTimeout(tt.h);tt.h=setTimeout(()=>t.className='',2800)};
+
+for(let l=1;l<=7;l++){$('lvls').insertAdjacentHTML('beforeend',`<section class="lv" data-l="${l}"><div class="level-head"><h3><span>${l===7?'BONUS':'LEVEL '+l}</span>${LV[l]}<em id="lp${l}"></em></h3>${notesControl(l)}</div><div class="row">${N.filter(n=>n.l===l).map(n=>`<button class="nd" id="n-${n.id}"><b>${n.t}</b><small>≈${n.w} wk${n.o?', optional':''}</small><i></i></button>`).join('')}</div></section>`)}
+$('chips').innerHTML=Object.keys(GL).map(k=>`<button data-g="${k}" class="${k==='*'?'on':''}">${GL[k]}</button>`).join('');
+
+function draw(){const t=$('tree'),b=t.getBoundingClientRect(),r=rel();let h='';
+N.forEach(n=>{const c=$('n-'+n.id);if(c.hidden)return;n.p.forEach(pid=>{const a=$('n-'+pid);if(a.hidden)return;const A=a.getBoundingClientRect(),C=c.getBoundingClientRect(),x1=A.left+A.width/2-b.left,y1=A.bottom-b.top,x2=C.left+C.width/2-b.left,y2=C.top-b.top,m=Math.max(30,(y2-y1)/2),k=S.done[pid]?'on':un(n)?'open':'off',active=!r||(r.has(pid)&&r.has(n.id)),dm=active?'':' dim',routeClass=active&&r?' route-edge':'';
+h+=`<path class="${k}${dm}${routeClass}" data-a="${pid}" data-b="${n.id}" d="M${x1} ${y1}C${x1} ${y1+m},${x2} ${y2-m},${x2} ${y2}"/>`})});
+$('ln').innerHTML=h}
+
+function refresh(){const r=rel();let vis=0,wk=0,dn=0,tot=0;const lp={};
+document.querySelector('[data-l="7"]').hidden=!showOpt;
+N.forEach(n=>{const e=$('n-'+n.id),d=S.done[n.id],ok=un(n);e.hidden=n.o&&!showOpt;
+const inRoute=!r||r.has(n.id),isGoal=goal!=='*'&&n.g.includes(goal);
+e.className='nd'+(d?' done':ok?' open':' lock')+(n.o?' opt':'')+(r&&!inRoute?' dim route-muted':'')+(r&&inRoute?' route-node':'')+(isGoal?' goal-node':'');
+e.setAttribute('aria-label',`${n.t}. ${d?'Completed':ok?'Available to start':'Locked'}. ${n.w} weeks.`);
+e.lastChild.textContent=d?'✅':ok?'▶':'🔒';
+if(!e.hidden){tot++;(lp[n.l]=lp[n.l]||[0,0])[1]++;if(d){dn++;lp[n.l][0]++}if(!r||r.has(n.id)){vis++;wk+=n.w}}});
+for(let l=1;l<=7;l++)if(lp[l])$('lp'+l).textContent=lp[l][0]+'/'+lp[l][1];
+$('xp').textContent=S.xp;$('pc').textContent=Math.round(dn/tot*100)+'%';$('st').textContent=cur();$('bs').textContent=S.best;$('dy').textContent=S.days;
+$('ci').disabled=S.last===td();$('ci').textContent=S.last===td()?'Checked in today ✔':'Check in today (+10 XP)';
+const nx=RW.find(x=>x[0]>cur());$('nx').textContent=nx?`${nx[0]-cur()} more day${nx[0]-cur()>1?'s':''} to “${nx[1]}”`:'All rewards unlocked 👑';
+$('bd').innerHTML=RW.map(([d,n,i])=>`<span class="${S.best>=d?'on':''}" title="${d}-day streak">${i} ${n}<small>${d}d</small></span>`).join('');
+$('info').textContent=`${GL[goal]}: ${vis} topics, about ${wk} weeks at ~8 h/week (rough estimate)${goal==='*'?'':'. Topics outside this path are dimmed.'}`;
+document.querySelectorAll('#chips button').forEach(b=>b.classList.toggle('on',b.dataset.g===goal));
+draw()}
+
+function openN(id){const n=M[id],d=S.done[id],miss=n.p.filter(p=>!S.done[p]),dep=N.some(x=>x.p.includes(id)&&S.done[x.id]),xp=n.w*20;
+$('dlg').innerHTML=`<h2>${n.t}</h2><p class="mt">Level ${n.l}${n.o?' (bonus)':''}, about ${n.w} weeks, worth ${xp} XP</p><p>${n.d}</p><h4>What to learn</h4><ul>${n.tp.map(x=>`<li>${x}</li>`).join('')}</ul><h4>Free resources</h4><ul>${n.rs.map(([a,u])=>`<li>${u?`<a href="${u}" target="_blank" rel="noopener">${a}</a>`:a}</li>`).join('')}</ul>${n.p.length?`<h4>Unlocked by</h4><p>${n.p.map(p=>`<span class="pq ${S.done[p]?'ok':''}">${S.done[p]?'✅':'🔒'} ${M[p].t}</span>`).join('')}</p>`:''}<div class="act">${d?`<button id="act" ${dep?'disabled':''}>Undo complete${dep?' (later topics are done)':''}</button>`:miss.length?`<p>🔒 Complete the topics above to unlock this one.</p>`:`<button id="act" class="pri">Mark complete (+${xp} XP)</button>`}<button id="cl">Close</button></div>`;
+$('cl').onclick=()=>$('dlg').close();
+const a=$('act');if(a&&!a.disabled)a.onclick=()=>{if(d){delete S.done[id];S.xp=Math.max(0,S.xp-xp)}else{S.done[id]=1;S.xp+=xp;const nu=N.filter(x=>x.p.includes(id)&&!S.done[x.id]&&un(x)).length;tt(`+${xp} XP${nu?`, ${nu} new topic${nu>1?'s':''} unlocked`:''}`)}sv();$('dlg').close();refresh()};
+$('dlg').showModal()}
+
+$('tree').addEventListener('click',e=>{const n=e.target.closest('.nd');if(n)openN(n.id.slice(2))});
+$('tree').addEventListener('mouseover',e=>{const n=e.target.closest('.nd');document.querySelectorAll('#ln path').forEach(p=>p.classList.toggle('hl',!!n&&(p.dataset.a===n.id.slice(2)||p.dataset.b===n.id.slice(2))))});
+$('chips').addEventListener('click',e=>{const b=e.target.closest('button');if(b){goal=b.dataset.g;refresh()}});
+$('op').onchange=e=>{showOpt=e.target.checked;refresh()};
+$('ci').onclick=()=>{if(S.last===td())return;S.streak=S.last===yd()?S.streak+1:1;S.last=td();S.days++;S.best=Math.max(S.best,S.streak);S.xp+=10;sv();refresh();const rw=RW.find(x=>x[0]===S.streak);tt(rw?`${rw[2]} New title: ${rw[1]}! ${S.streak}-day streak`:`Day ${S.streak} streak, +10 XP`)};
+$('rs').onclick=()=>{if(confirm('Reset all progress, XP and streaks?')){S={xp:0,done:{},last:'',streak:0,best:0,days:0};sv();refresh()}};
+$('dlg').addEventListener('click',e=>{if(e.target===$('dlg'))$('dlg').close()});
+if('ResizeObserver' in window)new ResizeObserver(draw).observe($('tree'));
+addEventListener('resize',draw);
+refresh();
+})();
+    </script>
+</body>
+</html>

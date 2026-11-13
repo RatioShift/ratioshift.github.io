@@ -67,31 +67,52 @@
                 <p>Coming Soon: Visual CSS Grid layout builder.</p>
             </div>
         </div>
-        <section class="library-container" style="margin-top: 4rem;"> 
-            <div class="card-header">
-                <h2>Library</h2>
-                <p>Access your course materials and academic resources.</p>
+        <section class="library-container" aria-labelledby="library-title">
+            <div class="card-header library-heading">
+                <span class="library-eyebrow">THE KNOWLEDGE VAULT</span>
+                <h2 id="library-title">My Library</h2>
+                <p>A little shelf for the resources that move your learning forward. Hover a book to pull it out.</p>
             </div>
-            
-            <div class="input-grid">
-                <a href="https://docs.google.com/spreadsheets/d/16gq1FJILMQ992ico81LNLj4ftvWfzXqjvZFz8djPdnQ/edit?gid=0#gid=0" target="_blank" class="tool-link">
-                    <div class="calculator-card tool-card library-card">
-                        <span class="tool-icon">📘</span>
-                        <h3>C Programming I (Track Sheet)</h3>
-                        <p>University course problem list. Open the official Excel sheet tracker for assigned problems.</p>
-                        <span class="card-badge">Course Resource</span>
-                    </div>
-                </a>
-            </div>
-            <div class="input-grid">
-                <a href="https://docs.google.com/spreadsheets/d/1b6wOghA6MKj06JcFQxARex_iXA7uKj8tczZYc-MoXLU/edit?usp=drivesdk" target="_blank" class="tool-link">
-                    <div class="calculator-card tool-card library-card">
-                        <span class="tool-icon">📘</span>
-                        <h3>Competitive Programming I (Track Sheet)</h3>
-                        <p>University course problem list. Open the official Excel sheet tracker for assigned problems.</p>
-                        <span class="card-badge">Course Resource</span>
-                    </div>
-                </a>
+
+            <div class="library-room">
+                <div class="library-shelf" aria-label="Academic resource bookshelf">
+                    <a class="shelf-book book-c" href="https://docs.google.com/spreadsheets/d/16gq1FJILMQ992ico81LNLj4ftvWfzXqjvZFz8djPdnQ/edit?gid=0#gid=0"
+                       target="_blank" rel="noopener noreferrer" aria-label="Open C Programming I Track Sheet">
+                        <span class="book-object">
+                            <span class="book-spine">
+                                <span class="book-mark">01</span>
+                                <span class="book-spine-title">C PROGRAMMING I</span>
+                                <span class="book-spine-sub">TRACK SHEET</span>
+                            </span>
+                            <span class="book-cover">
+                                <span class="cover-top">RATIOSHIFT · COURSE FILES</span>
+                                <span class="cover-symbol">C</span>
+                                <strong>C Programming I</strong>
+                                <span class="cover-subtitle">Problem Track Sheet</span>
+                                <span class="cover-footer">OPEN RESOURCE ↗</span>
+                            </span>
+                        </span>
+                    </a>
+
+                    <a class="shelf-book book-cp" href="https://docs.google.com/spreadsheets/d/1b6wOghA6MKj06JcFQxARex_iXA7uKj8tczZYc-MoXLU/edit?usp=drivesdk"
+                       target="_blank" rel="noopener noreferrer" aria-label="Open Competitive Programming I Track Sheet">
+                        <span class="book-object">
+                            <span class="book-spine">
+                                <span class="book-mark">02</span>
+                                <span class="book-spine-title">COMPETITIVE PROGRAMMING I</span>
+                                <span class="book-spine-sub">TRACK SHEET</span>
+                            </span>
+                            <span class="book-cover">
+                                <span class="cover-top">RATIOSHIFT · COURSE FILES</span>
+                                <span class="cover-symbol">⌘</span>
+                                <strong>Competitive<br>Programming I</strong>
+                                <span class="cover-subtitle">Problem Track Sheet</span>
+                                <span class="cover-footer">OPEN RESOURCE ↗</span>
+                            </span>
+                        </span>
+                    </a>
+                </div>
+                <div class="shelf-plinth" aria-hidden="true"><span>RATIO SHIFT · STUDY COLLECTION</span></div>
             </div>
         </section>
     </main>
