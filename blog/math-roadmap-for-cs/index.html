@@ -9,7 +9,7 @@
     <title>The Ultimate Math Roadmap for CS (2027–2029) | Ratio Shift</title>
     <style>
 :root{--a:var(--accent-color,#007bff);--bg:var(--bg-color,#fff);--card:var(--nav-bg,#f8f9fa);--bd:var(--toggle-bg,#ccc);--tx:var(--text-color,#333);--ok:#22c55e}
-main.rm{max-width:1180px;margin:2rem auto 4rem;padding:0 16px;width:100%}
+main.rm{max-width:1240px;margin:2rem auto 4rem;padding:clamp(2rem, 4vw, 3.5rem);background:#111518;border:1px solid var(--metal-border-subtle);border-radius:28px;box-shadow:0 24px 60px rgba(0,0,0,0.85);width:100%}
 .rm h1{font-size:clamp(1.8rem,4.5vw,2.9rem);line-height:1.15;margin-bottom:.6rem}
 .rm .lead{max-width:70ch;opacity:.85;margin-bottom:1.4rem}
 .hud{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin-bottom:14px}
@@ -72,7 +72,7 @@ dialog button{font:inherit;color:var(--tx);background:var(--bg);border:1.5px sol
 @media(prefers-reduced-motion:reduce){#ln path.open{animation:none}.nd{transition:none}}
     
 /* 2027–2029 Math Roadmap: responsive and focus-mode refinements */
-main.rm{max-width:1240px;padding-inline:clamp(14px,3.2vw,34px);margin-block:clamp(1.25rem,3vw,2.5rem) 4rem}
+main.rm{max-width:1240px;background:#111518;border:1px solid var(--metal-border-subtle);border-radius:28px;box-shadow:0 24px 60px rgba(0,0,0,0.85);padding:clamp(1.8rem, 3.5vw, 3rem);margin-block:clamp(1.25rem,3vw,2.5rem) 4rem}
 .rm .lead{font-size:clamp(.98rem,1.4vw,1.1rem);line-height:1.75}
 .hud{grid-template-columns:repeat(5,minmax(0,1fr))}
 .hud div{min-width:0;padding:clamp(9px,1.5vw,15px)}
@@ -153,14 +153,11 @@ main.rm{padding-inline:13px}.hud{grid-template-columns:repeat(2,minmax(0,1fr));g
                 <li><a href="/products" id="nav-products">Products</a></li>
                 <li><a href="/documentation" id="nav-docs">Documentation</a></li>
                 <li><a href="/blog" id="nav-blog">Blog</a></li>
+                <li><a href="/library" id="nav-library">Library</a></li>
                 <li><a href="/about" id="nav-about">About Us</a></li>
             </ul>
         </nav>
         <div class="nav-actions">
-            <label class="theme-switch" for="checkbox">
-                <input type="checkbox" id="checkbox" />
-                <div class="slider round"><span class="icon-sun">☀️</span><span class="icon-moon">🌙</span></div>
-            </label>
             <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle Menu"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
         </div>
     </header>
