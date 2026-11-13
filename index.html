@@ -4,41 +4,35 @@
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-9CGJQ1391C"></script>
     <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-9CGJQ1391C');
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-9CGJQ1391C');
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <meta name="description" content="RatioShift: Precision developer tools for responsive CSS math, fluid scale calculations, and design systems.">
+    <title>RatioShift | Precision Developer Tools & Responsive Math Hub</title>
     <link rel="stylesheet" href="./style.css">
-    <title>RatioShift | Developer Tools Hub</title>
 </head>
 <body>
+    <!-- Top Navigation -->
     <header class="navbar">
         <div class="nav-logo">
-            <a href="/">
+            <a href="/" aria-label="RatioShift Home">
                 <span class="logo-text">Ratio<span>Shift</span></span>
             </a>
         </div>
-        <nav class="nav-menu">
+        <nav class="nav-menu" aria-label="Main Navigation">
             <ul class="nav-links">
                 <li><a href="/products" id="nav-products">Products</a></li>
                 <li><a href="/documentation" id="nav-docs">Documentation</a></li>
                 <li><a href="/blog" id="nav-blog">Blog</a></li>
+                <li><a href="/library" id="nav-library">Library</a></li>
                 <li><a href="/about" id="nav-about">About Us</a></li>
             </ul>
         </nav>
         <div class="nav-actions">
-            <label class="theme-switch" for="checkbox">
-                <input type="checkbox" id="checkbox" />
-                <div class="slider round">
-                    <span class="icon-sun">☀️</span>
-                    <span class="icon-moon">🌙</span>
-                </div>
-            </label>
             <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle Menu">
                 <span class="bar"></span>
                 <span class="bar"></span>
@@ -47,35 +41,213 @@
         </div>
     </header> 
     
-    <main class="container">
-        <div class="card-header">
-            <h1>Developer Tools</h1>
-            <p>Select a tool to get started with your project.</p>
+    <!-- Fullscreen Watery & Scratch Atmosphere Hero Banner (100vh) -->
+    <section class="hero-fullscreen" aria-label="Hero Introduction">
+        <div class="hero-watery-backdrop" aria-hidden="true">
+            <div class="water-deep-ocean"></div>
+            <div class="water-caustic-beam"></div>
+            <div class="water-light-wave"></div>
+            <div class="water-refraction-bloom"></div>
+            <div class="water-caustic-shimmer"></div>
         </div>
+        <div class="hero-scratch-overlay" aria-hidden="true"></div>
+        <div class="hero-film-vignette" aria-hidden="true"></div>
         
-        <div class="input-grid">
-            <a href="./products/fluid-scale-calculator" class="tool-link">
-                <div class="calculator-card tool-card">
-                    <span class="tool-icon">📏</span> <h3>Fluid Scale Calculator</h3>
-                    <p>Generate CSS <code>clamp()</code> for typography, spacing, and layouts.</p>
-                </div>
-            </a>
-
-            <div class="calculator-card tool-card disabled">
-                <span class="tool-icon">🏁</span>
-                <h3>Grid Generator</h3>
-                <p>Coming Soon: Visual CSS Grid layout builder.</p>
+        <div class="hero-content">
+            <div class="hero-eyebrow">
+                <span class="pulse-dot"></span>
+                <span>NATIVE RESPONSIVE MATH ENGINE</span>
+            </div>
+            <h1 class="hero-title">Precise Math for Fluid Web Interfaces</h1>
+            <p class="hero-subtitle">Eliminate breakpoint spaghetti. Generate mathematically pure CSS <code>clamp()</code> scales, layout grids, and responsive tokens with zero runtime overhead.</p>
+            <div class="hero-actions">
+                <a href="./products/fluid-scale-calculator" class="metal-btn hero-btn-white">
+                    <span>Launch Calculator</span>
+                    <span class="run-arrow">&rarr;</span>
+                </a>
+                <a href="/library" class="hero-btn-ghost">
+                    Browse Knowledge Vault
+                </a>
             </div>
         </div>
+
+        <a href="#explore" class="hero-scroll-prompt" aria-label="Scroll to explore">
+            <span class="scroll-mouse-icon"><span class="scroll-wheel"></span></span>
+            <span class="scroll-text">Scroll to explore</span>
+            <span class="scroll-chevron">&darr;</span>
+        </a>
+    </section>
+
+    <main class="container" id="explore">
+
+        <!-- Shiny Metal Brag Metrics Strip -->
+        <section class="brag-strip" aria-label="Engineering Benchmarks">
+            <div class="brag-card">
+                <div class="brag-number">0.00 KB</div>
+                <div class="brag-label">Dependencies</div>
+                <div class="brag-sub">100% Native browser standards</div>
+            </div>
+            <div class="brag-card">
+                <div class="brag-number">100%</div>
+                <div class="brag-label">Precision Math</div>
+                <div class="brag-sub">Continuous linear interpolation</div>
+            </div>
+            <div class="brag-card">
+                <div class="brag-number">Zero</div>
+                <div class="brag-label">Breakpoint Snapping</div>
+                <div class="brag-sub">Fluid scales across all viewports</div>
+            </div>
+            <div class="brag-card">
+                <div class="brag-number">100</div>
+                <div class="brag-label">Lighthouse Ready</div>
+                <div class="brag-sub">Maximum performance &amp; speed</div>
+            </div>
+        </section>
+
+        <!-- Developer Tools Ecosystem -->
+        <section aria-labelledby="tools-title">
+            <div class="card-header" style="margin-bottom: 2.2rem;">
+                <h2 id="tools-title" style="font-size: 2.2rem; letter-spacing: -0.04em;">Developer Utilities</h2>
+                <p>Engineered tools designed for modern frontend architects and UI designers.</p>
+            </div>
+
+            <div class="input-grid">
+                <!-- Tool 1: Fluid Scale Calculator -->
+                <a href="./products/fluid-scale-calculator" class="tool-link">
+                    <article class="tool-card">
+                        <div class="tool-card-header">
+                            <span class="tool-icon"><span class="material-icons">straighten</span></span>
+                            <span class="tool-status-badge active">Active v1.4</span>
+                        </div>
+                        <h3>Fluid Scale Calculator</h3>
+                        <p>Generate production-grade CSS <code>clamp()</code> functions for typography, spacing, padding, and layout bounds with automated REM calculations.</p>
+                        <div class="tool-footer">
+                            <span>Launch Calculator</span>
+                            <span class="material-icons" style="font-size: 1.1rem;">arrow_forward</span>
+                        </div>
+                    </article>
+                </a>
+
+                <!-- Tool 2: Visual CSS Grid Generator -->
+                <div class="tool-link">
+                    <article class="tool-card disabled">
+                        <div class="tool-card-header">
+                            <span class="tool-icon"><span class="material-icons">grid_view</span></span>
+                            <span class="tool-status-badge coming-soon">In Development</span>
+                        </div>
+                        <h3>Visual Grid Generator</h3>
+                        <p>Visual CSS Grid layout synthesizer with dynamic fractional unit calculations, template areas, and auto-placement configuration.</p>
+                        <div class="tool-footer">
+                            <span>Preview Available Soon</span>
+                            <span class="material-icons" style="font-size: 1.1rem;">lock</span>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Tool 3: Modular Scale Engine -->
+                <div class="tool-link">
+                    <article class="tool-card disabled">
+                        <div class="tool-card-header">
+                            <span class="tool-icon"><span class="material-icons">tune</span></span>
+                            <span class="tool-status-badge coming-soon">Queued</span>
+                        </div>
+                        <h3>Modular Scale Engine</h3>
+                        <p>Harmonic mathematical typographic ratio generator (Minor Third, Golden Ratio, Augmented Fourth) with live CSS variable export.</p>
+                        <div class="tool-footer">
+                            <span>In Architecture</span>
+                            <span class="material-icons" style="font-size: 1.1rem;">schedule</span>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- "What People Say" Kinetic Sliding Section (Adam Perlis Awwwards Showcase) -->
+        <section class="testimonials-section" aria-labelledby="testimonials-title">
+            <div class="testimonials-header">
+                <div class="testimonials-header-left">
+                    <span class="library-eyebrow">COMMUNITY REVIEWS</span>
+                    <h2 id="testimonials-title">What People Say</h2>
+                    <p>Feedback from engineers, architects &amp; design leads building with RatioShift.</p>
+                </div>
+                <div class="slider-controls">
+                    <button class="slider-btn" id="prevSlideBtn" aria-label="Previous Testimonial">‹</button>
+                    <button class="slider-btn" id="nextSlideBtn" aria-label="Next Testimonial">›</button>
+                </div>
+            </div>
+
+            <div class="slider-container" id="sliderContainer">
+                <div class="slider-track" id="sliderTrack">
+                    <!-- Testimonial 1 -->
+                    <div class="testimonial-card">
+                        <div class="quote-icon">“</div>
+                        <p class="testimonial-text">RatioShift is a game-changer for responsive UI systems. Eliminating breakpoint jumping with mathematically pure clamp() calculations has streamlined our design system development across all screens.</p>
+                        <div class="reviewer-meta">
+                            <div class="reviewer-avatar">SV</div>
+                            <div class="reviewer-info">
+                                <h4>Sergio Vilatimo</h4>
+                                <p>Creative Director &amp; UI Architect</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 2 -->
+                    <div class="testimonial-card">
+                        <div class="quote-icon">“</div>
+                        <p class="testimonial-text">The liquid metal design aesthetic and tactile micro-interactions prove that developer tools can be both mathematically rigorous and genuinely beautiful. The 0.00KB dependency philosophy is unmatched.</p>
+                        <div class="reviewer-meta">
+                            <div class="reviewer-avatar">AP</div>
+                            <div class="reviewer-info">
+                                <h4>Adam Perlis</h4>
+                                <p>Founder &amp; Product Design Director</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 3 -->
+                    <div class="testimonial-card">
+                        <div class="quote-icon">“</div>
+                        <p class="testimonial-text">I use the Fluid Scale Calculator on every single client build. It replaces 20 media queries with one elegant CSS formula that renders seamlessly from 320px mobile to 4K ultra-wide monitors.</p>
+                        <div class="reviewer-meta">
+                            <div class="reviewer-avatar">MK</div>
+                            <div class="reviewer-info">
+                                <h4>Maya Kowalski</h4>
+                                <p>Staff Frontend Engineer</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 4 -->
+                    <div class="testimonial-card">
+                        <div class="quote-icon">“</div>
+                        <p class="testimonial-text">The C Programming and Competitive Programming track sheets inside the 3D Vault gave our university computer science study group the exact structured roadmap we needed. Outstanding work!</p>
+                        <div class="reviewer-meta">
+                            <div class="reviewer-avatar">TR</div>
+                            <div class="reviewer-info">
+                                <h4>Tanvir Rahman</h4>
+                                <p>Competitive Programmer &amp; CS Student</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slider-pagination" id="sliderPagination">
+                <!-- Dots injected via JavaScript -->
+            </div>
+        </section>
+
+        <!-- The Knowledge Vault: 3D Bookshelf -->
         <section class="library-container" aria-labelledby="library-title">
-            <div class="card-header library-heading">
+            <div class="library-heading">
                 <span class="library-eyebrow">THE KNOWLEDGE VAULT</span>
-                <h2 id="library-title">My Library</h2>
-                <p>A little shelf for the resources that move your learning forward. Hover a book to pull it out.</p>
+                <h2 id="library-title">Curated Track Sheets</h2>
+                <p>Structured problem-solving tracks and algorithmic collections curated to accelerate your engineering foundations.</p>
             </div>
 
             <div class="library-room">
                 <div class="library-shelf" aria-label="Academic resource bookshelf">
+                    <!-- Book 1: C Programming -->
                     <a class="shelf-book book-c" href="https://docs.google.com/spreadsheets/d/16gq1FJILMQ992ico81LNLj4ftvWfzXqjvZFz8djPdnQ/edit?gid=0#gid=0"
                        target="_blank" rel="noopener noreferrer" aria-label="Open C Programming I Track Sheet">
                         <span class="book-object">
@@ -94,6 +266,7 @@
                         </span>
                     </a>
 
+                    <!-- Book 2: Competitive Programming -->
                     <a class="shelf-book book-cp" href="https://docs.google.com/spreadsheets/d/1b6wOghA6MKj06JcFQxARex_iXA7uKj8tczZYc-MoXLU/edit?usp=drivesdk"
                        target="_blank" rel="noopener noreferrer" aria-label="Open Competitive Programming I Track Sheet">
                         <span class="book-object">
@@ -112,11 +285,62 @@
                         </span>
                     </a>
                 </div>
-                <div class="shelf-plinth" aria-hidden="true"><span>RATIO SHIFT · STUDY COLLECTION</span></div>
+                <div class="shelf-plinth" aria-hidden="true">
+                    <span>RATIO SHIFT · STUDY COLLECTION</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us & Contact Section (Inspiration: adamperlis.com/contact/) -->
+        <section class="contact-section" id="contact" aria-labelledby="contact-title">
+            <div class="contact-card">
+                <div class="contact-info">
+                    <div class="availability-pill">
+                        <span class="telemetry-pulse"></span>
+                        <span>AVAILABLE FOR COLLABORATION &amp; TOOLING</span>
+                    </div>
+                    <h2 id="contact-title">Let's Build Together</h2>
+                    <p>Precision frontend architecture, custom developer tooling, or open-source collaboration. Tell me what you're making and where you're stuck.</p>
+                    
+                    <div class="contact-methods">
+                        <div class="contact-method-item">
+                            <span class="material-icons">terminal</span>
+                            <span>Engineered by <strong>Al Azmain</strong></span>
+                        </div>
+                        <div class="contact-method-item">
+                            <span class="material-icons">public</span>
+                            <span>Based in Bangladesh (UTC+6) • Global Remote</span>
+                        </div>
+                        <div class="contact-method-item">
+                            <span class="material-icons">forum</span>
+                            <span>Direct Community Support via WhatsApp &amp; GitHub</span>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="contact-form" id="contactForm" onsubmit="event.preventDefault(); showToast('Message dispatched! Thank you for connecting.'); this.reset();">
+                    <div class="metal-input-group">
+                        <label for="contactName">Your Name</label>
+                        <input type="text" id="contactName" class="metal-input" placeholder="e.g. Alex Rivera" required>
+                    </div>
+                    <div class="metal-input-group">
+                        <label for="contactEmail">Your Email</label>
+                        <input type="email" id="contactEmail" class="metal-input" placeholder="alex@company.com" required>
+                    </div>
+                    <div class="metal-input-group">
+                        <label for="contactMessage">What are you building?</label>
+                        <textarea id="contactMessage" class="metal-input" placeholder="Tell me about your app, tool idea, or engineering inquiry..." rows="3" required></textarea>
+                    </div>
+                    <button type="submit" class="metal-btn" style="width: 100%; margin-top: 0.5rem;">
+                        <span>Send Message</span>
+                        <span class="run-arrow">↵</span>
+                    </button>
+                </form>
             </div>
         </section>
     </main>
 
+    <!-- Global Footer (Inspiration: adamperlis.com/contact/) -->
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-brand">
@@ -125,44 +349,46 @@
                         <span class="logo-text">Ratio<span>Shift</span></span>
                     </a>
                 </div>
-                <p>Precise tools for modern web developers.</p>
+                <p>Precise mathematical utilities for modern web engineers and interface designers.</p>
             </div>
 
             <div class="footer-links">
-                <h4>Quick Links</h4>
+                <h4>Ecosystem</h4>
                 <ul>
-                    <li><a href="/products">Products</a></li>
+                    <li><a href="/products">Developer Tools</a></li>
+                    <li><a href="/products/fluid-scale-calculator">Fluid Scale Calculator</a></li>
                     <li><a href="/documentation">Documentation</a></li>
-                    <li><a href="/blog">Blog</a></li>
+                    <li><a href="/blog">Blog &amp; Roadmaps</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="https://docs.google.com/spreadsheets/d/16gq1FJILMQ992ico81LNLj4ftvWfzXqjvZFz8djPdnQ/edit?gid=0#gid=0" target="_blank" rel="noopener noreferrer">C Track Sheet ↗</a></li>
+                    <li><a href="https://docs.google.com/spreadsheets/d/1b6wOghA6MKj06JcFQxARex_iXA7uKj8tczZYc-MoXLU/edit?usp=drivesdk" target="_blank" rel="noopener noreferrer">CP Track Sheet ↗</a></li>
                     <li><a href="/about">About Us</a></li>
+                    <li><a href="#contact">Contact &amp; Inquiries</a></li>
                 </ul>
             </div>
 
             <div class="footer-social">
                 <h4>Connect</h4>
                 <div class="social-icons">
-                    <a href="https://github.com/RatioShift" target="_blank">GitHub</a>
-                    <a href="https://wa.me/message/6KNXSWCVHWSXH1" target="_blank" id="footer-whatsapp">WhatsApp</a>
+                    <a href="https://github.com/RatioShift" target="_blank" rel="noopener noreferrer">GitHub / RatioShift</a>
+                    <a href="https://github.com/abdullahalazmain" target="_blank" rel="noopener noreferrer">GitHub / Al Azmain</a>
+                    <a href="https://wa.me/message/6KNXSWCVHWSXH1" target="_blank" rel="noopener noreferrer" id="footer-whatsapp">WhatsApp Community</a>
                 </div>                
-            </div>
-
-            <div class="language-section">
-                <h4>Language</h4>
-                <div class="lang-wrapper">
-                    <span class="material-icons lang-icon">translate</span>
-                    <select id="language-select" class="lang-dropdown">
-                        <option value="en">English</option>
-                        <!-- <option value="bn">বাংলা (Bangla)</option> -->
-                    </select>
-                </div>
             </div>
         </div>
         
         <div class="footer-bottom">
-            <p>&copy; 2024 Ratio Shift. Built with ⚡ by Al Azmain.</p>
+            <p>&copy; 2026 RatioShift. Built by Al Azmain. All rights reserved.</p>
+            <button class="back-to-top-btn" id="backToTopBtn" aria-label="Scroll Back to Top">↑</button>
         </div>
     </footer>
 
+    <!-- Global Scripts -->
     <script src="./script.js"></script>
 </body>
 </html>

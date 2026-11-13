@@ -1,21 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <!-- Google tag (gtag.js) -->
+    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-9CGJQ1391C"></script>
     <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-9CGJQ1391C');
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-9CGJQ1391C');
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="./style.css">
+    <title>About Us &amp; Contact | RatioShift</title>
     <link rel="stylesheet" href="/style.css">
-    <title>About Us | Ratio Shift</title>
 </head>
 <body>
     <header class="navbar">
@@ -29,17 +26,11 @@
                 <li><a href="/products" id="nav-products">Products</a></li>
                 <li><a href="/documentation" id="nav-docs">Documentation</a></li>
                 <li><a href="/blog" id="nav-blog">Blog</a></li>
+                <li><a href="/library" id="nav-library">Library</a></li>
                 <li><a href="/about" id="nav-about">About Us</a></li>
             </ul>
         </nav>
         <div class="nav-actions">
-            <label class="theme-switch" for="checkbox">
-                <input type="checkbox" id="checkbox" />
-                <div class="slider round">
-                    <span class="icon-sun">☀️</span>
-                    <span class="icon-moon">🌙</span>
-                </div>
-            </label>
             <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle Menu">
                 <span class="bar"></span>
                 <span class="bar"></span>
@@ -49,27 +40,149 @@
     </header>
 
     <main class="container">
-        <section class="calculator-card about-card">
-            <div class="about-header">
-                <h1>About Ratio Shift</h1>
-                <p class="subtitle">Simplicity in every pixel.</p>
+        <!-- About Hero -->
+        <section class="card-header">
+            <div class="availability-pill" style="margin-bottom: 1.2rem; display: inline-flex;">
+                <span class="telemetry-pulse"></span>
+                <span>ORIGIN &amp; CRAFTSMANSHIP</span>
             </div>
+            <h1>About RatioShift</h1>
+            <p>Built for engineers who demand mathematical continuum over brittle breakpoint jumps. Zero runtime weight, pure web standards.</p>
+        </section>
 
-            <div class="about-content">
-                <h3>The Mission</h3>
-                <p>Ratio Shift was born out of a simple need: to make responsive design less about manual math and more about creative flow. Our tools are designed for developers who demand precision without the headache of complex formulas.</p>
+        <!-- Detailed About Section -->
+        <section class="about-detail-section">
+            <div class="about-detail-grid">
 
-                <h3>Behind the Code</h3>
-                <p>Hello! I'm <strong>Al Azmain</strong>, the creator of Ratio Shift. I am a developer passionate about building lightweight, high-performance tools that solve real-world design problems. I believe that professional-grade tools should be accessible, fast, and beautiful.</p>
-                
-                <div class="about-cta">
-                    <p>Want to see more of my work?</p>
-                    <a href="https://github.com/abdullahalazmain" target="_blank" class="back-btn">View My GitHub</a>
+                <!-- Mission Block -->
+                <div class="about-block">
+                    <span class="about-block-eyebrow">THE MISSION</span>
+                    <h2 class="about-block-title">Why RatioShift Exists</h2>
+                    <p>Modern web development is drowning in breakpoints. Media queries patched on top of media queries, each one a manual override where mathematics should speak for itself. RatioShift was built to fix this — permanently.</p>
+                    <p>Every tool in this ecosystem is designed around a single truth: a well-defined linear interpolation should replace every hardcoded breakpoint in your stylesheet. If the math is right, your UI adapts continuously — not in jumps.</p>
                 </div>
+
+                <!-- Origin Block -->
+                <div class="about-block">
+                    <span class="about-block-eyebrow">THE ORIGIN</span>
+                    <h2 class="about-block-title">Built from Frustration</h2>
+                    <p>RatioShift started as a personal scratch pad. While working on client web projects, the creator — <strong>Al Azmain</strong> — kept rediscovering the same CSS <code>clamp()</code> formula from memory, writing it out manually each time, checking the math, adjusting the viewport bounds, testing on three screen sizes.</p>
+                    <p>That manual cycle was the problem. RatioShift is the solution: an open-source, zero-dependency suite of precision tools that eliminates the repetition and replaces it with clean, calculated output every time.</p>
+                </div>
+
+                <!-- Creator Block -->
+                <div class="about-block">
+                    <span class="about-block-eyebrow">THE ENGINEER</span>
+                    <h2 class="about-block-title">Al Azmain</h2>
+                    <p>Al Azmain is a software developer and frontend architect based in Bangladesh. He builds at the intersection of mathematics, design systems, and developer experience — with a philosophy that tools should be faster and lighter than the problems they solve.</p>
+                    <p>His work spans responsive CSS architecture, competitive programming (ICPC-level algorithmic problem solving), and educational open resources distributed freely to the developer community in Bangladesh and beyond.</p>
+                    <div class="about-tags">
+                        <span class="about-tag">CSS Architecture</span>
+                        <span class="about-tag">Design Systems</span>
+                        <span class="about-tag">Competitive Programming</span>
+                        <span class="about-tag">Zero Dependencies</span>
+                        <span class="about-tag">Bangladesh UTC+6</span>
+                    </div>
+                </div>
+
+                <!-- Philosophy Block -->
+                <div class="about-block">
+                    <span class="about-block-eyebrow">THE PHILOSOPHY</span>
+                    <h2 class="about-block-title">DRY · Zero Weight · Open</h2>
+                    <p><strong>DRY (Don't Repeat Yourself)</strong> is not just a code quality rule at RatioShift — it is the entire product philosophy. One formula. One token. One source of truth that scales to every device without duplication.</p>
+                    <p><strong>Zero Dependencies</strong> means every tool ships as pure HTML, CSS, and JavaScript. No npm, no build step, no CDN risk. If the browser supports it, RatioShift works — offline, on slow connections, forever.</p>
+                    <p><strong>Open by default.</strong> Track sheets, documentation, and tools are freely available. Knowledge compounds when it is shared without friction.</p>
+                </div>
+
+                <!-- What You Get Block -->
+                <div class="about-block about-block--wide">
+                    <span class="about-block-eyebrow">THE ECOSYSTEM</span>
+                    <h2 class="about-block-title">What RatioShift Gives You</h2>
+                    <div class="about-feature-row">
+                        <div class="about-feature-item">
+                            <span class="material-icons">straighten</span>
+                            <div>
+                                <strong>Fluid Scale Calculator</strong>
+                                <p>Generate CSS <code>clamp()</code> with one input. Covers font-size, padding, margins, borders — any numeric property. Copies to clipboard instantly.</p>
+                            </div>
+                        </div>
+                        <div class="about-feature-item">
+                            <span class="material-icons">menu_book</span>
+                            <div>
+                                <strong>Knowledge Vault</strong>
+                                <p>Curated C Programming and Competitive Programming track sheets, structured for university students and self-learners to follow a clear algorithmic path.</p>
+                            </div>
+                        </div>
+                        <div class="about-feature-item">
+                            <span class="material-icons">article</span>
+                            <div>
+                                <strong>Technical Blog</strong>
+                                <p>In-depth tutorials on CSS mathematics, responsive design theory, and developer tools — written for engineers who prefer precision over buzzwords.</p>
+                            </div>
+                        </div>
+                        <div class="about-feature-item">
+                            <span class="material-icons">grid_view</span>
+                            <div>
+                                <strong>Coming: Grid Generator</strong>
+                                <p>A visual CSS Grid layout synthesizer with fractional unit calculations and responsive template areas — currently in active development.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- About Us & Contact Section (Inspiration: adamperlis.com/contact/) -->
+        <section class="contact-section" style="margin-top: 1rem;" id="contact">
+            <div class="contact-card">
+                <div class="contact-info">
+                    <div class="availability-pill">
+                        <span class="telemetry-pulse"></span>
+                        <span>AVAILABLE FOR FRONTEND CONSULTING &amp; APPS</span>
+                    </div>
+                    <h2>Let's Build Together</h2>
+                    <p>RatioShift was engineered by <strong>Al Azmain</strong>, a software developer passionate about high-performance tools, design systems, and responsive mathematics. Whether you need consulting on design tokens, custom developer tools, or open-source roadmaps, feel free to reach out.</p>
+
+                    <div class="contact-methods">
+                        <div class="contact-method-item">
+                            <span class="material-icons">engineering</span>
+                            <span>Engineering Lead: <strong>Al Azmain</strong></span>
+                        </div>
+                        <div class="contact-method-item">
+                            <span class="material-icons">location_on</span>
+                            <span>Based in Bangladesh (UTC+6) • Global Remote</span>
+                        </div>
+                        <div class="contact-method-item">
+                            <span class="material-icons">chat</span>
+                            <span>Direct Community via WhatsApp &amp; GitHub</span>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="contact-form" onsubmit="event.preventDefault(); showToast('Inquiry received! Will reply shortly.'); this.reset();">
+                    <div class="metal-input-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" class="metal-input" placeholder="e.g. Alex Rivera" required>
+                    </div>
+                    <div class="metal-input-group">
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" class="metal-input" placeholder="alex@company.com" required>
+                    </div>
+                    <div class="metal-input-group">
+                        <label for="message">What are you building?</label>
+                        <textarea id="message" class="metal-input" placeholder="Tell me what you're making and where you're stuck..." rows="3" required></textarea>
+                    </div>
+                    <button type="submit" class="metal-btn" style="width: 100%; margin-top: 0.5rem;">
+                        <span>Dispatch Message</span>
+                        <span class="run-arrow">↵</span>
+                    </button>
+                </form>
             </div>
         </section>
     </main>
 
+    <!-- Global Footer (Inspiration: adamperlis.com/contact/) -->
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-brand">
@@ -78,40 +191,42 @@
                         <span class="logo-text">Ratio<span>Shift</span></span>
                     </a>
                 </div>
-                <p>Precise tools for modern web developers.</p>
+                <p>Precise mathematical utilities for modern web engineers and interface designers.</p>
             </div>
 
             <div class="footer-links">
-                <h4>Quick Links</h4>
+                <h4>Ecosystem</h4>
                 <ul>
-                    <li><a href="/products">Products</a></li>
+                    <li><a href="/products">Developer Tools</a></li>
+                    <li><a href="/products/fluid-scale-calculator">Fluid Scale Calculator</a></li>
                     <li><a href="/documentation">Documentation</a></li>
-                    <li><a href="/blog">Blog</a></li>
+                    <li><a href="/blog">Blog &amp; Roadmaps</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="https://docs.google.com/spreadsheets/d/16gq1FJILMQ992ico81LNLj4ftvWfzXqjvZFz8djPdnQ/edit?gid=0#gid=0" target="_blank" rel="noopener noreferrer">C Track Sheet ↗</a></li>
+                    <li><a href="https://docs.google.com/spreadsheets/d/1b6wOghA6MKj06JcFQxARex_iXA7uKj8tczZYc-MoXLU/edit?usp=drivesdk" target="_blank" rel="noopener noreferrer">CP Track Sheet ↗</a></li>
                     <li><a href="/about">About Us</a></li>
+                    <li><a href="/about#contact">Contact &amp; Inquiries</a></li>
                 </ul>
             </div>
 
             <div class="footer-social">
                 <h4>Connect</h4>
                 <div class="social-icons">
-                    <a href="https://github.com/RatioShift" target="_blank" aria-label="RatioShift GitHub">GitHub</a>
-                    <a href="https://wa.me/message/6KNXSWCVHWSXH1" target="_blank" id="footer-whatsapp">WhatsApp</a>
-                </div>
-            </div>
-            <div class="language-section">
-                <h4>Language</h4>
-                <div class="lang-wrapper">
-                    <span class="material-icons lang-icon">translate</span>
-                    <select id="language-select" class="lang-dropdown">
-                        <option value="en">English</option>
-                        <!-- <option value="bn">বাংলা (Bangla)</option> -->
-                    </select>
-                </div>
+                    <a href="https://github.com/RatioShift" target="_blank" rel="noopener noreferrer">GitHub / RatioShift</a>
+                    <a href="https://github.com/abdullahalazmain" target="_blank" rel="noopener noreferrer">GitHub / Al Azmain</a>
+                    <a href="https://wa.me/message/6KNXSWCVHWSXH1" target="_blank" rel="noopener noreferrer" id="footer-whatsapp">WhatsApp Community</a>
+                </div>                
             </div>
         </div>
         
         <div class="footer-bottom">
-            <p>&copy; 2024 Ratio Shift. Built with ⚡ by Al Azmain.</p>
+            <p>&copy; 2026 RatioShift. Built by Al Azmain. All rights reserved.</p>
+            <button class="back-to-top-btn" id="backToTopBtn" aria-label="Scroll Back to Top">↑</button>
         </div>
     </footer>
 
